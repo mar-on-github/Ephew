@@ -8,7 +8,7 @@
             $idofpost
         );
         if (compilepost($clean_id, 'posttype') === 'article') {
-            echo "<li class=\"postview\ article\">";
+            echo "<li class=\"postview article\">";
         } else {
             echo "<li class=\"postview\">";
         }
