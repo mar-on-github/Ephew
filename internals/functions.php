@@ -1,5 +1,5 @@
 <?php
-$httproot = 'C://Users//justm//OneDrive//Documenten//Vrijetijdsbestedingen//Ephew//webroot-syncedto_testingpi/';
+$httproot = '../';
 function comcompost($postid){
     composepost($postid, compilepost($postid, 'posttype'), compilepost($postid, 'postcontent'), compilepost($postid, 'post_timestamp'), compilepost($postid, 'postauthor'), compilepost($postid, 'post_alttext'));
 }
@@ -96,7 +96,7 @@ function ephewloggesthis($logme){
     //The name of your log file.
     //Modify this and add a full path if you want to log it in 
     //a specific directory.
-    $pathToFile = 'C://Users//justm//OneDrive//Documenten//Vrijetijdsbestedingen//Ephew//webroot-syncedto_testingpi//..//ephew.log';
+    $pathToFile = '..//..//ephew.log';
 
     //Log the data to your file using file_put_contents.
     file_put_contents($pathToFile, $data, FILE_APPEND);
@@ -139,4 +139,4 @@ function LocateStyleSheet(){
     }
     return $themetype;
 }
-require_once ('C://Users//justm//OneDrive//Documenten//Vrijetijdsbestedingen//Ephew//webroot-syncedto_testingpi/../hiddenphp/sqlpassword.php');
+require_once ('../../hiddenphp/sqlpassword.php');
