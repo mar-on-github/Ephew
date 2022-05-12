@@ -2,7 +2,7 @@
 include("../../auth_session.php");
 if (isset($_FILES["fileToUpload"])) {
 $target_dir = "../profilephotos/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$target_file = $target_dir . "profilephoto_" . $_SESSION['username'] . "_" . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
