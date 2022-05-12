@@ -1,0 +1,4 @@
+# These are ever-changing files that'll take up too much space, time and commits to keep track of.
+./profile/profilephotos/*
+# .txt files are only used for indexation within Ephew and will only be needed on the actual server.
+*.txt
