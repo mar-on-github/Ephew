@@ -1,0 +1,8 @@
+.themeswitcher {
+    color: #c9c8c6;
+    background-color: #b76b01;
+}
+
+.themeswitcher:hover {
+    background-color: #bbdcbb;
+}

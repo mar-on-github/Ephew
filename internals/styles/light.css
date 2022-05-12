@@ -1,0 +1,133 @@
+body {
+  background: #008060;
+  scrollbar-3dlight-color: #04AA6D;
+}
+.loginsidebar {
+  background-color: #b086ff;
+}
+
+.sidebar {
+  background-color: #f1f1f1;
+  box-shadow: 3px 3px 8px 1px #1eff00;
+}
+
+.sidebar a {
+  color: #000000;
+}
+
+.sidebar a.active {
+  background-color: #04AA6D;
+  color: #ffff00;
+}
+
+
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: orange;
+}
+
+div.timeline {
+  background-color: #fff;
+  border-color: #008060;
+}
+
+div.content {
+  background-image: linear-gradient(#BC9312, #ffe0e09f);
+}
+
+div.logincontent {
+  background-image: linear-gradient(#BC9312, #ffffff);
+}
+
+.openbtn {
+  background-color: #d2b48c;
+  color: #4dffd2;
+  box-shadow: 3px 3px 8px 1px #1eff00;
+}
+
+div.bottombar {
+  background-color: #4dffd2;
+}
+
+.bottombar a:not(.themeswitcher) {
+  color: #b76b01;
+}
+
+.themeswitcher {
+  color: #c9c8c6;
+  background-color: #b76b01;
+}
+
+.themeswitcher:hover {
+  background-color: #bbdcbb;
+}
+
+.bottombar a:hover:not(.active) {
+  background-color: #00FF00;
+}
+
+.bottombar .active {
+  background-color: #04AA6D;
+}
+
+.ephew-form {
+  background: #ffffff;
+}
+.big-ephew-form {
+  background: #ffffff;
+}
+
+h1.login-title {
+  color: #666;
+}
+
+h1 {
+  color: #2a2a2a;
+}
+
+.login-input {
+  border: 1px solid #ccc;
+}
+
+.login-input:focus {
+  border-color: #6e8095;
+}
+
+.ephew-buttons {
+  color: #5c5c8a;
+  background: #4dffd2;
+}
+
+.ephew-buttons:hover {
+  color: #515174;
+  background: #4dffd3a1;
+}
+
+.ephew-buttons:focus {
+  color: #1e1eb9;
+  background: #00dfa7a1;
+}
+.ephew-inputtablebox {
+    color: #053520;
+    background-color: #b086ff;
+    border-color: #4dffd2;
+  }
+.link {
+  color: #666;
+}
+
+.link a {
+  color: #666;
+}
+.timeline li {
+  border-color: #4dffd2;
+  background-color: #ffffff65;
+  color: #2a2a2a;
+}
+.timeline li.article {
+  background-color: #32d7ae51;
+}
+.postedbyuserheader a {
+color: black;
+}

@@ -1,0 +1,122 @@
+body {
+    background: #91660a;
+    scrollbar-3dlight-color: #04AA6D;
+}
+.loginsidebar {
+  background-color: #b086ff;
+}
+.sidebar {
+  background-color: #f1f1f1;
+  box-shadow: 4px 3px 8px 1px #05bddd;
+}
+.sidebar a {
+  color: #000000;
+background-color: #696969;}
+
+.sidebar a.active {
+  background-color: #aaaa04;
+  color: #ffff00;
+}
+
+
+
+.sidebar a:hover:not(.active) {
+  background-color: #f47a7a;
+  color: #aa9fd7;
+}
+
+div.timeline {
+  background-color: #fff;
+  border-color: #008060;
+}
+
+div.content {
+  background-image: linear-gradient(#BC9312, #ffe0e09f);
+}
+div.logincontent {
+  background-image: linear-gradient(#BC9312, #ffe0e09f);
+}
+.openbtn {
+  background-color: #d2b48c;
+  color: #161616;
+  box-shadow: 4px 3px 8px 1px #05bddd;
+}
+
+div.bottombar {
+  background-image: linear-gradient(to right, #a9c3bc, #ffe0e09f);
+}
+.bottombar a:not(.themeswitcher) {
+  color: #a74646;
+}
+.themeswitcher {
+  color: #fefefe;
+  background-color: #171616;
+}
+
+.themeswitcher:hover {
+  background-color: #bbdcbb;
+}
+
+.bottombar a:hover:not(.active) {
+  background-color: #00FF00;
+}
+
+.bottombar .active {
+  background-color: #04AA6D;
+}
+.ephew-form {
+    background: #ffffff;
+}
+.big-ephew-form {
+  background: #ffffff;
+}
+h1.login-title {
+    color: #666;
+}
+h1 {
+  color: #2a2a2a;
+}
+.login-input {
+    border: 1px solid #ccc;
+}
+.login-input:focus {
+    border-color:#6e8095;
+}
+.ephew-buttons {
+    color: #5c5c8a;
+    background: #a9c3bc;
+}
+.ephew-buttons:hover {
+  color: #515174;
+  background: #a9c3bc;
+}
+.ephew-buttons:focus {
+  color: #1e1eb9;
+  background: #00dfa7a1;
+}
+.ephew-inputtablebox {
+      color: #5c5c8a;
+      border-color: #a9c3bc;
+background-color: #f5f5dc;}
+
+.link {
+    color: #666;
+}
+.link a {
+    color: #666;
+}
+.timeline li {
+  border-color: #ffd54d;
+  background-color: #c2c2c2af;
+  color: #191515;
+}
+.postedbyuserheader a {
+  color: #bbdcbb;
+}
+.timeline li.article {
+  background-color: #ff4da372;
+}
+
+.postedbyuserheader {
+  color: #faebd7;
+}

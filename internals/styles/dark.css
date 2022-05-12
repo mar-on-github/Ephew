@@ -1,0 +1,117 @@
+body {
+    background: #2e3533;
+    scrollbar-3dlight-color: #046f48;
+    text-shadow: 0px 0px 5px #e3bdc2;
+    color: #d4bfbf;
+}
+.loginsidebar {
+  background-color: #563f82;
+}
+.sidebar {
+  background-color: #161616;
+  box-shadow: 1px 1px 6px 0px #fffefe;
+}
+.sidebar a {
+  color: #9a9a9a;
+}
+.sidebar a.active {
+  background-color: #1a095c;
+  color: #939300;
+}
+.sidebar a:hover:not(.active) {
+  background-color: #3c3c3c;
+  color: #bd7c03;
+}
+
+div.timeline {
+  background-color: #585757b2;
+  border-color: #015c45;
+}
+
+div.content {
+  /* background-image: linear-gradient(#9b862a8d, #0505059f); */
+  background-color: #1c1b1b9f;
+}
+div.logincontent {
+  background-image: linear-gradient(#7f640b60, #2c2c2c);
+}
+.openbtn {
+  background-color: #161616;
+  color:#d2b48c;
+  box-shadow: 4px 3px 8px 1px #fffefe;
+}
+div.bottombar {
+  background-color: #143b31;
+}
+.bottombar a:not(.themeswitcher) {
+  color: #d4bfbf;
+}
+.themeswitcher {
+  color: #171616;
+  background-color: #fefefe;
+}
+.timeline li {
+  border-color: #1a095c;
+  background-color: #47476b;
+  color: #bbdcbb;
+}
+.themeswitcher:hover {
+  background-color: #bbdcbb;
+}
+.bottombar a:hover:not(.active) {
+  background-color: #027e02;
+}
+.bottombar .active {
+  background-color: #046743;
+}
+.ephew-form {
+    background: #000000;
+}
+.big-ephew-form {
+  background: #000000;
+}
+h1.login-title {
+    color: #666;
+}
+h1 {
+  color: #d7d1d1;
+}
+.login-input {
+    border: 1px solid #ccc;
+}
+.login-input:focus {
+    border-color:#4c5865;
+}
+.ephew-buttons {
+    color: #96ebee;
+    background: #0c654f;
+}
+.ephew-buttons:hover {
+  color: #47476b;
+  background: #075e48a1;
+}
+.ephew-buttons:focus {
+  color: #151571;
+  background: #02694fa1;
+}
+.ephew-inputtablebox {
+    color: #96ebee;
+    border-color: #0c654f;
+background-color: #008b8b;}
+.link {
+    color: #666;
+}
+a {
+    color: rgb(178, 216, 247);
+}
+.timeline li {
+  border-color: #94aba5;
+  background-color: #03204fa9;
+  color: #ffffff;
+}
+.postedbyuserheader a {
+  color: rgb(90, 161, 248);
+}
+.timeline li.article {
+  background-color: #2d9a2870;
+}
