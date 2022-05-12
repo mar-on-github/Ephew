@@ -1,7 +1,7 @@
 <?php
 $pagetitle = "Editing your profile";
 $usedefaultsidebar = "true";
-include("../../internals/unifiedheader.php");
+include __DIR__ . ("/../../internals/unifiedheader.php");
 ?>
 <form action="/profile/edit/uploadpfp.php" method="post" enctype="multipart/form-data">
     Select image to upload:

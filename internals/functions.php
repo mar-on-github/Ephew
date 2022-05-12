@@ -139,4 +139,4 @@ function LocateStyleSheet(){
     }
     return $themetype;
 }
-require_once ('../../hiddenphp/sqlpassword.php');
+require_once __DIR__ . ('/../../hiddenphp/sqlpassword.php');
