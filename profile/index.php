@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . ("/../internals/unifiedheader.php");
 include __DIR__ . ("/../auth_session.php");
 $user = $_GET['for'] ?? $_SESSION['username'];
 $for = $_GET['for'] ?? "''";
