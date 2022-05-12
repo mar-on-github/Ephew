@@ -16,7 +16,7 @@ function writetotimeline($IDToWrite){
         <?php
         $SQL_comm_USER = GetSQLCreds('username');
         $SQL_comm_PASS = GetSQLCreds('password');
-        $conn = mysqli_connect("localhost","$SQL_comm_USER", "$SQL_comm_PASS", "posts");
+        $conn = mysqli_connect("localhost","$SQL_comm_USER", "$SQL_comm_PASS", "ephew");
 
         // Check connection
         if($conn === false){
@@ -62,16 +62,8 @@ function writetotimeline($IDToWrite){
         if (!isset($post_priv)) {
             $post_priv = 'public';
         }
-        $sql = "CREATE TABLE `posts`.`post_$postid` ( `postcontent` TEXT, `posttype` TEXT, `postauthor` TEXT, `post_timestamp` TIMESTAMP, `post_alt_text` TEXT, `post_privacy` text) ENGINE = ARIA";
-        if (mysqli_query($conn, $sql)) {
-            echo "created new table for this.";
-        } else {
-            echo "Error! Couldn't post that!<br></br>"
-            . mysqli_error($conn);
-            die;
-        }
-        $sql = "INSERT into `posts`.`post_$postid` (postcontent, posttype, postauthor, post_timestamp, post_alt_text, post_privacy)
-        VALUES ('$phewcontent', '$phewtype', '$phewposter', '$posttimestamp', '$phewalttext', '$post_priv')";
+        $sql = "INSERT into `ephew`.`posts` (postid, postcontent, posttype, postauthor, post_timestamp, post_alt_text, post_privacy)
+        VALUES ('$postid', '$phewcontent', '$phewtype', '$phewposter', '$posttimestamp', '$phewalttext', '$post_priv')";
         if(mysqli_query($conn, $sql)){
             writetotimeline($postid);
             echo "<h3>Post processed!</h3>";

@@ -6,14 +6,14 @@ function comcompost($postid){
 function compilepost($postid,$typeoutput){
     $SQL_comm_USER = GetSQLCreds('username');
     $SQL_comm_PASS = GetSQLCreds('password');
-    $conn = new mysqli("localhost","$SQL_comm_USER", "$SQL_comm_PASS", "posts");
+    $conn = new mysqli("localhost","$SQL_comm_USER", "$SQL_comm_PASS", "ephew");
 
     // Check connection
     if ($conn === false) {
         die("ERROR: Could not connect to database. "
         . mysqli_connect_error());
     }
-    $sql = "SELECT * FROM `post_$postid`";
+    $sql = "SELECT * FROM `ephew`.`posts` WHERE postid='$postid'";
     $sqlq = $conn->query($sql);
     // if ($sqlq === false) {
     //     die("ERROR: Could not connect to database. "
