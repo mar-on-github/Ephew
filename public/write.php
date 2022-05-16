@@ -8,7 +8,7 @@ function writetotimeline($IDToWrite){
     $fileContent = file_get_contents($filename);
     file_put_contents($filename, $IDToWrite . "\n" . $fileContent);
 }
-doctrine
+
 ?>
 
  <title> Ephew - Processing post...</title>

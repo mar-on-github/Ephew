@@ -139,4 +139,18 @@ function LocateStyleSheet(){
     }
     return $themetype;
 }
-require_once __DIR__ . ('/../../hiddenphp/sqlpassword.php');
+//require_once __DIR__ . ('/../../hiddenphp/sqlpassword.php');
+function GetSQLCreds(string $output = 'username' | 'password' | 'address' | 'database'): string {
+    require_once realpath(__DIR__ . '/../../vendor/autoload.php');
+
+    // Looing for .env at the root directory
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../../");
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../../", '.env.local');
+    $dotenv->load();
+    // Retrive env variable
+    $username = $_ENV['DB_USER'];
+    $database = $_ENV['DB_NAME'];
+    $password = $_ENV['DB_PASS'];
+    $address = $_ENV['DB_ADDR'];
+    return $$output;
+}
