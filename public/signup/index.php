@@ -15,7 +15,7 @@ include __DIR__ . ("/../internals/unifiedheader.php");
     require_once('..//internals//functions.php');
     $SQL_comm_USER = GetSQLCreds('username');
     $SQL_comm_PASS = GetSQLCreds('password');
-    $con = mysqli_connect("localhost", "$SQL_comm_USER", "$SQL_comm_PASS", "LoginSystem");
+    $con = mysqli_connect("localhost", "$SQL_comm_USER", "$SQL_comm_PASS", "ephew");
     // Check connection
     if (mysqli_connect_errno()) {
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
