@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . ("/../internals/unifiedheader.php");
+include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
 ?>
 <?php
 if (session_id() == '') {
@@ -63,5 +63,5 @@ if (!isset($_SESSION["username"])) {
     document.getElementById("wishes").innerHTML = wishes;
   </script>
   <?php
-  include __DIR__ . ("/../internals/unifiedfooter.php");
+  include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
   ?>

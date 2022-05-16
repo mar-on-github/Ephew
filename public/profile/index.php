@@ -2,7 +2,7 @@
 include __DIR__ . ("/../auth_session.php");
 $user = $_GET['for'] ?? $_SESSION['username'];
 $for = $_GET['for'] ?? "''";
-require_once ('..//internals//functions.php');
+require_once ('../../src/Ephew-internals/functions.php');
 $SQL_comm_USER = GetSQLCreds('username');
 $SQL_comm_PASS = GetSQLCreds('password');
 // Check connection
@@ -14,7 +14,7 @@ if (mysqli_connect_errno()) {
 if ((($user === $for)) and (!($user === $_SESSION['username']))) {
     $pagetitle = $user . "'s profile";
     $usedefaultsidebar = "false";
-    include __DIR__ . ("/../internals/unifiedheader.php");
+    include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
 ?>
     <button class="openbtn" onclick="openNav()">☰</button>
     <div class="sidebar" id="mySidebar"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -32,7 +32,7 @@ if ((($user === $for)) and (!($user === $_SESSION['username']))) {
 if ((($user === $_SESSION['username'])) and (!($user === $for))) {
     $pagetitle = "Your profile";
     $usedefaultsidebar = "false";
-    include __DIR__ . ("/../internals/unifiedheader.php");
+    include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
     ?>
         <button class="openbtn" onclick="openNav()">☰</button>
         <div class="sidebar" id="mySidebar"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -79,5 +79,5 @@ echo "</ul>";
 
         </div>
         <?php
-        include __DIR__ . ("/../internals/unifiedfooter.php");
+        include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
         ?>

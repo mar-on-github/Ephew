@@ -1,7 +1,7 @@
 <?php
 $pagetitle = "New post - Writing an article";
 $usedefaultsidebar = "true";
-include __DIR__ . ("/../internals/unifiedheader.php");
+include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
 ?>
 <form target="_blank" action="/write.php" method="POST" class="big-ephew-form">
     <div class="centered">
@@ -32,7 +32,7 @@ include __DIR__ . ("/../internals/unifiedheader.php");
 </form>
 </div>
 <?php
-include __DIR__ . ("/../internals/unifiedfooter.php");
+include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
 ?>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">

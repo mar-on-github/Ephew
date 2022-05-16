@@ -2,7 +2,7 @@
 include __DIR__ . ("/../../auth_session.php");
 $pagetitle = "Editing your profile";
 $usedefaultsidebar = "false";
-include __DIR__ . ("/../../internals/unifiedheader.php");
+include __DIR__ . ("/../../../src/Ephew-internals/unifiedheader.php");
 ?>
 <button class="openbtn" onclick="openNav()">☰</button>
 <div class="sidebar" id="mySidebar"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -21,5 +21,5 @@ include __DIR__ . ("/../../internals/unifiedheader.php");
     </form>
 </div>
 <?php
-include __DIR__ . ("/../../internals/unifiedfooter.php");
+include __DIR__ . ("/../../../src/Ephew-internals/unifiedfooter.php");
 ?>

@@ -12,7 +12,7 @@ include __DIR__ . ("/../auth_session.php");
 <?php
 $pagetitle = "New post - Choose a post type";
 $usedefaultsidebar = "true";
-include __DIR__ . ("/../internals/unifiedheader.php");
+include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
 ?>
         <h1>Choose post type</h1>
         <div class="ephew-form">
@@ -24,5 +24,5 @@ include __DIR__ . ("/../internals/unifiedheader.php");
 
 
 <?php
-include __DIR__ . ("/../internals/unifiedfooter.php");
+include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
 ?>

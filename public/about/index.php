@@ -1,7 +1,7 @@
 <?php
 $pagetitle = "About";
 $usedefaultsidebar = "true";
-include __DIR__ . ("/../internals/unifiedheader.php");
+include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
 ?><CENTER>
     <?php
     $abouttext = file_get_contents(__DIR__ . '/../../readme.md');
@@ -13,5 +13,5 @@ include __DIR__ . ("/../internals/unifiedheader.php");
     echo $Parsedown->text($abouttext);
     ?></CENTER>
 <?php
-include __DIR__ . ("/../internals/unifiedfooter.php");
+include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
 ?>
