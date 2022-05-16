@@ -2,7 +2,7 @@
   include("auth_session.php");
  ?>
 <?php
- include("internals/unifiedheader.php");
+include __DIR__ . ("/../src/Ephew-internals/unifiedheader.php");
 function writetotimeline($IDToWrite){
     $filename = "./timelinebyid.txt";
     $fileContent = file_get_contents($filename);
@@ -82,5 +82,5 @@ function writetotimeline($IDToWrite){
         ?>
     </div>
 <?php
- include("internals/unifiedfooter.php");
+include __DIR__ . ("/../src/Ephew-internals/unifiedfooter.php");
  ?>
