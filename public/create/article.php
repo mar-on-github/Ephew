@@ -7,27 +7,27 @@ include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
     <div class="centered">
         <h1>Article editor</h1>
         <hr>
-        <label for="privacy">
+        <div class="ephew-formlabels"><label for="privacy">
             <h4>Privacy</h4>
             <select name="privacy" required class="ephew-inputtablebox">
                 <option value="public">Public</option>
                 <option value="private" disabled>Fwends only</option>
                 <option value="public-readonly" disabled>Comments off</option>
             </select>
-        </label>
-        <label for="alttext">
+        </label></div>
+        <div class="ephew-formlabels"><label for="alttext">
             <h4>Title</h4><input type=text name=alttext value="title" minlength="6" class="ephew-inputtablebox" required>
             <p><i>A short version of your article, for displaying on the timeline! (6 characters minimum)</i></p>
-        </label>
-        <label for="phewcontent">
+        </label></div>
+        <div class="ephew-formlabels"><label for="phewcontent">
             <h4>Write your article</h4>
             <p><i>In the Ephew-Markdown Article editor. </i></p>
             <p><small>100 characters minimum!</small></p>
     </div>
     <div><textarea name="phewcontent" id="MarkDownArticleEditor" class="ephew-inputtablebox" required minlength="100"></textarea></div><br>
-    </label>
+    </label></div>
     <div class="centered">
-        <input type="submit" class="ephew-buttons" value="Post it!">
+        <input type="submit" class="ephew-buttons ephew-button-big" value="Post it!">
         <input type=hidden name=phewtype value="article"></div>
 </form>
 </div>
