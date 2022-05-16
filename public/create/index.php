@@ -14,13 +14,13 @@ $pagetitle = "New post - Choose a post type";
 $usedefaultsidebar = "true";
 include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
 ?>
-        <h1>Choose post type</h1>
-        <div class="ephew-form">
-            <a href="?posttype=post"><button class="ephew-buttons">Plain post</button></a>
-            <a href="?posttype=media"><button class="ephew-buttons">Photo/video post</button></a>
-            <a href="/create/writearticle.php"><button class="ephew-buttons">Article post</button></a>
-            <a href="?posttype=link"><button class="ephew-buttons">Link post</button></a>
-        </div>
+<h1>Choose post type</h1>
+<div class="ephew-form">
+    <a href="?posttype=post"><button class="ephew-buttons ephew-button-big">Plain post</button></a>
+    <a href="/create/media.php"><button class="ephew-buttons ephew-button-big">Photo/video post</button></a>
+    <a href="/create/article.php"><button class="ephew-buttons ephew-button-big">Article post</button></a>
+    <a href="?posttype=link"><button class="ephew-buttons ephew-button-big">Link post</button></a>
+</div>
 
 
 <?php

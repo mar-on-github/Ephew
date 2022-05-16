@@ -56,7 +56,7 @@ if (session_id() == '') {
       <h1 class="login-title">Login</h1>
       <input type="text" class="login-input" name="username" placeholder="Username" autofocus="true"/>
       <input type="password" class="login-input" name="password" placeholder="Password"/>
-      <input type="submit" value="Login" name="submit" class="ephew-buttons"/>
+      <input type="submit" value="Login" name="submit" class="ephew-buttons ephew-button-big"/>
 </form>
 </div>
 <div class="logincontent">

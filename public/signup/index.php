@@ -57,7 +57,7 @@ include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
       <input type="text" class="login-input" name="username" placeholder="Username" required />
       <input type="text" class="login-input" name="email" placeholder="Email Adress">
       <input type="password" class="login-input" name="password" placeholder="Password">
-      <input type="submit" name="submit" value="Register" class="ephew-buttons">
+      <input type="submit" name="submit" value="Register" class="ephew-buttons ephew-button-big">
       <p class="link">Already have an account? <a href="/login/">Log in!</a></p>
   </form>
 </div>
