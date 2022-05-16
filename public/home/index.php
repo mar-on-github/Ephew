@@ -40,7 +40,7 @@ if (!isset($_SESSION["username"])) {
 
       <h1>Good <span id="wishes">day</span>, <b><?php echo $_SESSION['username']; ?></b>!</h1>
       <p>Welcome to Ephew.</p>
-      <button onClick="window.location.reload(true)" class="ephew-buttons">Reload timeline!</button><br></br>
+      <button onClick="window.location.reload(true)" class="ephew-buttons ephew-button-big">Reload timeline!</button><br></br>
       <?php include('timeline.php'); ?>
     </div>
   <?php
