@@ -47,11 +47,11 @@ if ((compilepost($_GET["postid"], 'posttype') == 'article')) {
     . "</div>";
     echo "<span class=\"post-timestamp\" id=\"post_timedate_"
     . $_GET["postid"]
-      . "\"></span>"
-      . "<script>"
-      . "var timestamp ="
+      . "\"></span>\n"
+      . "<script>\n"
+      . "var timestamp = ("
       . compilepost($_GET["postid"], 'post_timestamp')
-      . "\n"
+      . " * 1000)\n"
       . "var date = new Date(timestamp);\n\n"
       . "var postedondate = (\"Date: \" + date.getDate() +\n"
       . "\"/\" + (date.getMonth() + 1) +\n"

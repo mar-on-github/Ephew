@@ -42,11 +42,11 @@ function composepost($postid,$posttype,$postcontent,$post_timestamp,$postauthor,
     ."</div>";
     echo "<span class=\"post-timestamp\" id=\"post_timedate_"
     . $postid
-    . "\"></span>"
-    ."<script>"
-    ."var timestamp ="
+    . "\"></span>\n"
+    ."<script>\n"
+    ."var timestamp = ("
     .$post_timestamp
-    ."\n"
+    ."* 1000 )\n"
     . "var date = new Date(timestamp);\n\n"
     . "var postedondate = (\"Date: \" + date.getDate() +\n"
     . "\"/\" + (date.getMonth() + 1) +\n"
