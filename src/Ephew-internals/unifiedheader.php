@@ -40,6 +40,7 @@ $themetype = LocateStyleSheet();
 </head>
 
 <body>
+    <button id="install_button" hidden class="ephew-buttons ephew-button-big">Install Ephew as a web app!</button>
     <script>
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register("/sw.js");

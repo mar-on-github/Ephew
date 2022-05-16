@@ -11,6 +11,7 @@
             "type": "image/png"
         }
     ],
+    "author": "M Bloeiman / Ephew",
     "name": "Ephew! - A new aproach to social media.",
     "short_name": "Ephew",
     "start_url": "/home/"
