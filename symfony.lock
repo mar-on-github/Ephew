@@ -83,11 +83,17 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.12"
     },
+    "graham-campbell/result-type": {
+        "version": "v1.0.4"
+    },
     "laminas/laminas-code": {
         "version": "4.5.1"
     },
     "nikic/php-parser": {
         "version": "v4.13.2"
+    },
+    "phpoption/phpoption": {
+        "version": "1.8.1"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -252,5 +258,8 @@
     },
     "symfony/yaml": {
         "version": "v5.4.3"
+    },
+    "vlucas/phpdotenv": {
+        "version": "v5.4.1"
     }
 }
