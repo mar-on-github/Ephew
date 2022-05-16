@@ -4,7 +4,7 @@ Starting this project today.
 2022-4-26
 -->
 <?php
-require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/../../vendor/autoload.php";
 require_once __DIR__ . "./functions.php";
 $themetype = LocateStyleSheet();
 ?>
