@@ -44,8 +44,7 @@ if ((compilepost($_GET["postid"], 'posttype') == 'article')) {
     . "\"/>"
     . compilepost($_GET["postid"], 'postauthor')
     . "</a>"
-    . "</div>";
-    echo "<span class=\"post-timestamp\" id=\"post_timedate_"
+    . "&nbsp;posted&nbsp;<span class=\"post-timestamp\" id=\"post_timedate_"
     . $_GET["postid"]
       . "\"></span>\n"
       . "<script>\n"
@@ -53,7 +52,7 @@ if ((compilepost($_GET["postid"], 'posttype') == 'article')) {
       . compilepost($_GET["postid"], 'post_timestamp')
       . " * 1000)\n"
       . "var date = new Date(timestamp);\n\n"
-      . "var postedondate = (\"Date: \" + date.getDate() +\n"
+      . "var postedondate = (\"on date: \" + date.getDate() +\n"
       . "\"/\" + (date.getMonth() + 1) +\n"
       . "\"/\" + date.getFullYear() +\n"
       . "\" \" + date.getHours() +\n"
@@ -62,7 +61,8 @@ if ((compilepost($_GET["postid"], 'posttype') == 'article')) {
       . "document.getElementById(\"post_timedate_"
       . $_GET["postid"]
       . "\").innerHTML = postedondate;"
-      . "</script>\n";
+      . "</script>\n"
+    . "</div>";
     $Parsedown = new Parsedown();
     echo "<h1>"
     . compilepost($_GET["postid"], 'post_alttext')
