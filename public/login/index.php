@@ -39,6 +39,7 @@ if (session_id() == '') {
         $rows = mysqli_num_rows($result);
         if ($rows == 1) {
             $_SESSION['username'] = $username;
+            $_SESSION['userid'] = GetUserID($username);
             ephewloggesthis("$username logged in.");
             header("Location: /home");
         } else {
