@@ -1,5 +1,5 @@
 <?php
-$httproot = '../';
+require_once realpath(__DIR__ . '/../../vendor/autoload.php');
 function comcompost($postid)
 {
     composepost($postid, compilepost($postid, 'posttype'), compilepost($postid, 'postcontent'), compilepost($postid, 'post_timestamp'), compilepost($postid, 'postauthor'), compilepost($postid, 'post_alttext'));
@@ -156,8 +156,6 @@ function LocateStyleSheet()
 //require_once __DIR__ . ('/../../hiddenphp/sqlpassword.php');
 function GetSQLCreds(string $output = 'username' | 'password' | 'address' | 'database'): string
 {
-    require_once realpath(__DIR__ . '/../../vendor/autoload.php');
-
     // Looing for .env at the root directory
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../../");
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../../", '.env.local');
