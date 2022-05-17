@@ -27,8 +27,8 @@ function writetotimeline($IDToWrite){
 
         $phewcontent =  encodeValue($_POST['phewcontent']);
         $phewtype = $_POST['phewtype'];
-        $phewposter =  $_SESSION['username'];
-        $phewalttext = $_POST['alttext'];
+        $phewposter =  $_SESSION['userid'];
+        $phewalttext = encodeValue($_POST['alttext']);
         $post_priv = $_POST['privacy'];
         $postid1 = rand(10000,99999999);
         $postid = md5($postid1);
