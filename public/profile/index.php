@@ -69,8 +69,7 @@ echo "<ul class=\"timeline\">";
         echo "</li>\n<br>\n";
     }
 } else {
-    echo "Couldn't find any posts..<br></br>"
-    . mysqli_error($conn);
+    echo "Couldn't find any posts by this user.";
     die;
 }
 echo "</ul>";
