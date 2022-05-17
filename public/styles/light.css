@@ -1,5 +1,5 @@
 body {
-  background: #008060;
+  background-color: #008060;
   scrollbar-3dlight-color: #04AA6D;
 }
 .loginsidebar {
@@ -70,12 +70,14 @@ div.bottombar {
 .bottombar .active {
   background-color: #04AA6D;
 }
-
+div.link-embed {
+  background-color: #ffffff;
+}
 .ephew-form {
-  background: #ffffff;
+  background-color: #ffffff;
 }
 .big-ephew-form {
-  background: #ffffff;
+  background-color: #ffffff;
 }
 
 h1.login-title {
@@ -96,23 +98,24 @@ h1 {
 
 .ephew-buttons {
   color: #5c5c8a;
-  background: #4dffd2;
+  background-color: #4dffd2;
 }
 
 .ephew-buttons:hover {
   color: #515174;
-  background: #4dffd3a1;
+  background-color: #4dffd3a1;
 }
 
 .ephew-buttons:focus {
   color: #1e1eb9;
-  background: #00dfa7a1;
+  background-color: #00dfa7a1;
 }
 .ephew-inputtablebox {
     color: #053520;
     background-color: #b086ff;
     border-color: #4dffd2;
   }
+
 .link {
   color: #666;
 }

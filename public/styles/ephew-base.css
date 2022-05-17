@@ -8,7 +8,7 @@ body {
     overflow: auto;
     font-size: 14px;
 }
-div.ephew-formlabels {
+div.ephew-formlabels + div.link-embed {
   border: 2px solid;
   border-radius: 5px;
   background-color: #5f9ea048;
@@ -71,13 +71,13 @@ ul {
 .postedbyuserheader {
   text-align: start;
   align-items: flex-start;
-  border-left: 6px solid #a746467b;
+  border-left: 6px solid #d58524;
   border-bottom: 4px solid grey;
   font-style: oblique;
   font-size: larger;
   padding: 10px;
 display: flex;
-}
+flex-direction: row;}
 .postedbyuserheader text {
         align-items: center;
         justify-content: center
@@ -183,12 +183,26 @@ div.timeline {
   padding: 1px 16px;
   height: 400px;
 }
-
-
+.link-embed {
+  border-radius: 10px 10px 40px 40px;
+  padding: 15px;
+  margin: 20px;
+align-self: center;
+text-align: center;
+}
+img.card-img-top {
+  max-width: 200px;
+  max-height: 200px;
+}
+.card-text {
+  size: 8px
+}
 .postview:not(.postview-article){
   border: 5px solid;
   border-width: thick;
   text-align: center;
+  align-self: center;
+  align-items: center;
   min-width: 300px;
 }
 
@@ -301,7 +315,7 @@ h4 {
 .ephew-inputtablebox{
   margin: 10px;
   border-radius: 10px 10px 20px 20px;
-  border: 0;
+  border: 5px solid;
   outline: 0;
   width: 80%;
   height: auto;
@@ -309,6 +323,15 @@ h4 {
   text-align: -webkit-center;
   text-align: center;
   cursor: pointer;
+}
+.ephew-inputtablebox[type=text] {
+  color: #b086ff;
+  background-color: #ffffff;
+}
+
+.ephew-inputtablebox[type=url] {
+  color: #b086ff;
+  background-color: #ffffff;
 }
 .link {
     font-size: 15px;
