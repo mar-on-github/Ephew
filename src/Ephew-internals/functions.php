@@ -31,27 +31,30 @@ function compilepost($postid, $typeoutput)
         return $$typeoutput;
     }
 }
-function composepost($postid, $posttype, $postcontent, $post_timestamp, $postauthor, $post_alttext)
-{
-    echo "<div>";
-    echo "<div class=\"postedbyuserheader\"><img src=\"/profile/picture.php?for="
+function composepost($postid, $posttype, $postcontent, $post_timestamp, $postauthor, $post_alttext){
+    echo "<div>\n<div class=\"postedbyuserheader\">";
+    if ((TestIfUsernameExists($postauthor)) == true) {
+    echo "<img src=\"/profile/picture.php?for="
         . $postauthor
         . "\"/>"
-        . "<a href=\"/profile?for="
+        . "by&nbsp;<a href=\"/profile?for="
         . $postauthor
         . "\"/>"
         . $postauthor
-        . "</a>"
-        . "</div>";
-    echo "<span class=\"post-timestamp\" id=\"post_timedate_"
+        . "</a>,";
+    } else {
+        echo "By a deleted user";
+    }
+        echo "&nbsp;<span class=\"post-timestamp\" id=\"post_timedate_"
         . $postid
         . "\"></span>\n"
+        . "</div>"
         . "<script>\n"
         . "var timestamp = ("
         . $post_timestamp
-        . "* 1000 )\n"
+        . " * 1000)\n"
         . "var date = new Date(timestamp);\n\n"
-        . "var postedondate = (\"Date: \" + date.getDate() +\n"
+        . "var postedondate = (\"posted on date: \" + date.getDate() +\n"
         . "\"/\" + (date.getMonth() + 1) +\n"
         . "\"/\" + date.getFullYear() +\n"
         . "\" \" + date.getHours() +\n"
@@ -68,12 +71,11 @@ function composepost($postid, $posttype, $postcontent, $post_timestamp, $postaut
             . "</p>";
     }
     if ($posttype == 'article') {
-
-        echo "<p>"
+        echo "<div class=\"link-embed\"><h2>"
             . $post_alttext
-            . "</p><a href=\"/reader/?postid="
+            . "</h2><h4>Article</h4><a href=\"/reader/?postid="
             . $postid
-            . "\">Read more...</a>";
+            . "\" class=\"ephew-buttons ephew-button-small\">Read article...</a></div>";
     }
     if ($posttype == 'link') {
         echo "<div class=\"link-embed\">";
@@ -203,21 +205,22 @@ function GetUserNameFromID($userid)
 }
 function TestIfUsernameExists($username)
 {
-    require_once(__DIR__ . '/../src/Ephew-internals/functions.php');
-    if (!(GetUserID('$username') === null)) {
+    if (!(GetUserID($username) === null)) {
         return true;
     } else {
         return false;
     }
 }
-function ReturnUsernameOrOnFailID($userid){
+function ReturnUsernameOrOnFailID($userid)
+{
     $RUOFID = GetUserNameFromID($userid);
     if ($RUOFID == NULL) {
         $RUOFID = $userid;
     }
     return $RUOFID;
 }
-function CreateEmbedForURL($url){
+function CreateEmbedForURL($url)
+{
     require_once(__DIR__ . "/../Assets/Metadatalib.php");
     try {
         // Initialize URL meta class 
@@ -233,12 +236,12 @@ function CreateEmbedForURL($url){
     }
 ?>
     <?php if (!empty($metaData)) { ?>
-                   <img src="<?php echo $metaData->image; ?>" class="card-img-top" alt="...">
-            <div class="link-card">
-                <h5 class="card-title"><?php echo $metaData->title; ?></h5>
-                <p class="card-text"><?php echo $metaData->description; ?></p>
-                <a href="<?php echo $metaData->url; ?>" class="btn btn-primary" target="_blank">Visit site</a>
-            </div>
+        <a href="<?php echo $metaData->url; ?>" class="btn btn-primary" target="_blank">
+            <img src="<?php echo $metaData->image; ?>" class="card-img-top" alt="..."></a>
+        <div class="link-card">
+            <h4 class="card-title"><?php echo $metaData->title; ?></h4>
+            <p class="card-text"><?php echo $metaData->description; ?></p><br>
+            <a href="<?php echo $metaData->url; ?>" class="ephew-buttons ephew-button-small" target="_blank">Visit site</a><br></br>
+        </div>
 <?php }
 }
-
