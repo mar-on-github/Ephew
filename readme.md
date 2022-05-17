@@ -5,6 +5,9 @@
 - [Erusev/ParseDown](https://parsedown.org/)_, for processing the articles and even <font color="brown">this very page</font>._
 - [sparksuite/simplemde-markdown-editor](https://github.com/sparksuite/simplemde-markdown-editor)_, for the article writer._
 - [Dalton Maag, Ubuntu, Canonical Ltd. / Ubuntu font family](https://design.ubuntu.com/font/).
+- [Symfony/Symfony](https://github.com/symfony/symfony)_, for keeping the code organised and safe._ (And a lot of it's sub-packages too!)
+
+See more in our [dependency graph](https://github.com/Ephew-org/Ephew/network/dependencies) on GitHub.
 
 ## About
 
