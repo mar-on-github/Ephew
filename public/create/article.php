@@ -21,8 +21,8 @@ include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
         </label></div>
         <div class="ephew-formlabels"><label for="phewcontent">
             <h4>Write your article</h4>
-            <p><i>In the Ephew-Markdown Article editor. </i></p>
-            <p><small>100 characters minimum!</small></p>
+            <p><i>In the Ephew-Markdown Article editor. Built on SimpleMDE.</i></p>
+            <p style="font-size: x-small;">100 characters minimum!</p>
     </div>
     <div><textarea name="phewcontent" id="MarkDownArticleEditor" class="ephew-inputtablebox" required minlength="100"></textarea></div><br>
     </label></div>
