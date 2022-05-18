@@ -1,5 +1,6 @@
 # Ephew
 #### A new aproach to social media. By M Bloeiman.
+[![Symfony](https://github.com/mar-on-github/Ephew/actions/workflows/symfony.yml/badge.svg)](https://github.com/mar-on-github/Ephew/actions/workflows/symfony.yml)
 
 ## Used resources
 - [Erusev/ParseDown](https://parsedown.org/)_, for processing the articles and even <font color="brown">this very page</font>._
