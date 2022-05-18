@@ -26,7 +26,7 @@ if ($_REQUEST['posttype'] == 'post') {
             </div>
                 <input type="submit" class="ephew-buttons ephew-button-big" value="Post it!">
             </div>
-            <input type=hidden name=phewtype value="article">
+            <input type=hidden name=phewtype value="post">
             <input type="hidden" name=alttext value="na" required>
     </form>
     </div>
