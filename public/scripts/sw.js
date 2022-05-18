@@ -1,5 +1,7 @@
-  import { precacheAndRoute } from 'workbox-precaching/precacheAndRoute';
-
+if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/scripts/sw.js");
+};
+import { precacheAndRoute } from "../node_modules/workbox-precaching/index.js";
   precacheAndRoute([{"revision":"3e1fc3346e1cf5b0403c12122289ca7a","url":"styles/dark.css"},{"revision":"ca84341f76121295ff642b1f2e391962","url":"styles/ephew-base.css"},{"revision":"4e8905653078a8cdfceab5fdac018a57","url":"styles/light.css"},{"revision":"ff6f1425f7b1dc881b26d2b4768796da","url":"styles/sepia.css"},{"revision":"048274bc674a52942e6783d20726543b","url":"styles/snow.css"}]);
 
   let deferredPrompt; // Allows to show the install prompt
