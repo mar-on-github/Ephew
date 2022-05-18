@@ -36,17 +36,17 @@ $themetype = LocateStyleSheet();
             . "</title>";
     }
     ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/script/nicm.js"></script>
 </head>
 
 <body>
     <button id="install_button" hidden class="ephew-buttons ephew-button-big">Install Ephew as a web app!</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="module">
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker.register("/scripts/sw.js");
         }
     </script>
+    <script src="/scripts/nicm.js"></script>
     <?php
     if (isset($usedefaultsidebar)) {
         if ($usedefaultsidebar === 'true') {
