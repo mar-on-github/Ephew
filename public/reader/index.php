@@ -36,9 +36,9 @@ if ((compilepost($_GET["postid"], 'posttype') == 'article')) {
   ?>
     <div class="postview postview-article">
       <?php
-    echo "<div class=\"postedbyuserheader\">An article by <img src=\"/profile/picture.php?for="
+    echo "<div class=\"postedbyuserheader\">An article by <img loading=\"lazy\" src=\"/profile/picture.php?for="
     . compilepost($_GET["postid"], 'postauthor')
-    . "\" width=\"50px\" alt=\"P\"/>"
+    . "\" width=\"50px\" alt=\"P\"/ class=\"lazy\">"
     . "<a href=\"/profile?for="
     . compilepost($_GET["postid"], 'postauthor')
     . "\"/>"

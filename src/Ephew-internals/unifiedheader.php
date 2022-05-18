@@ -36,14 +36,15 @@ $themetype = LocateStyleSheet();
             . "</title>";
     }
     ?>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/script/nicm.js"></script>
 </head>
 
 <body>
     <button id="install_button" hidden class="ephew-buttons ephew-button-big">Install Ephew as a web app!</button>
-    <script>
+    <script type="module">
         if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("/sw.js");
+            navigator.serviceWorker.register("/scripts/sw.js");
         }
     </script>
     <?php
@@ -53,7 +54,7 @@ $themetype = LocateStyleSheet();
             <button class="openbtn" onclick="openNav()">☰</button>
             <div class="sidebar" id="mySidebar"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                 <?php
-                bottombarlink('/home/', '<img src="/img/favicon.png" width="20px"> Ephew</a>');
+                bottombarlink('/home/', '<img loading="lazy" src="/img/favicon.png" width="20px"> Ephew</a>');
                 bottombarlink('/create/', '➕ New post');
                 bottombarlink('/about/', '❔Info');
                 bottombarlink('/feeback/', '❕Feedback');

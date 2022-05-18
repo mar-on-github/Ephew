@@ -34,9 +34,9 @@ function compilepost($postid, $typeoutput)
 function composepost($postid, $posttype, $postcontent, $post_timestamp, $postauthor, $post_alttext){
     echo "<div>\n<div class=\"postedbyuserheader\">";
     if ((TestIfUsernameExists($postauthor)) == true) {
-    echo "<img src=\"/profile/picture.php?for="
+    echo "<img loading=\"lazy\" src=\"/profile/picture.php?for="
         . $postauthor
-        . "\"/>"
+        . "\" class=\"lazy\"/>"
         . "by&nbsp;<a href=\"/profile?for="
         . $postauthor
         . "\"/>"
@@ -78,7 +78,8 @@ function composepost($postid, $posttype, $postcontent, $post_timestamp, $postaut
             . "\" class=\"ephew-buttons ephew-button-small\">Read article...</a></div>";
     }
     if ($posttype == 'link') {
-        echo "<div class=\"link-embed\">";
+        echo "<p>" . $post_alttext . "</p>"
+        . "<div class=\"link-embed\">";
         CreateEmbedForURL($postcontent);
         echo "</div>";
     }
@@ -235,7 +236,7 @@ function CreateEmbedForURL($url)
 ?>
     <?php if (!empty($metaData)) { ?>
         <a href="<?php echo $metaData->url; ?>" class="btn btn-primary" target="_blank">
-            <img src="<?php echo $metaData->image; ?>" class="card-img-top" alt="..."></a>
+            <img loading="lazy" src="<?php echo $metaData->image; ?>" class="card-img-top" alt="..."></a>
         <div class="link-card">
             <h4 class="card-title"><?php echo $metaData->title; ?></h4>
             <p class="card-text"><?php echo $metaData->description; ?></p><br>

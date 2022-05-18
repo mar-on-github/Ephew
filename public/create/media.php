@@ -24,7 +24,7 @@ include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
 
 
             <div class="media-upload-dropzone">
-                <img src="/img/media-upload.jpg" class="media-upload-icon" />
+                <img loading="lazy" src="/img/media-upload.jpg" class="media-upload-icon" />
                 <input type="file" class="media-upload-input" />
             </div><br style="size: 10px">
             <button type="button" class="ephew-buttons" name="media-upload" style="border-radius: 5px 5px 20px 20px;  border: 0;  outline: 0;  width: 255px;  height: 80px;  font-size: 16px;  padding: 17px;  bottom: 0px; text-align: -webkit-center;  text-align: center;  cursor: pointer;">Upload file</button>

@@ -1,10 +1,10 @@
 <?php
-if (isset($usedefaultsidebar) AND $usedefaultsidebar === 'true') {
+if (isset($usedefaultsidebar) and $usedefaultsidebar === 'true') {
   if (!isset($autoendcontentdiv) or !($autoendcontentdiv === 'false')) {
     echo "</div>";
   }
 }
-  ?>
+?>
 <div class="bottombar" id="mybottombar">
   <a href="javascript:void(0);" class="icon" onclick="unrollbottombar()">&#9776;</a>
   <?php
@@ -20,26 +20,9 @@ if (isset($usedefaultsidebar) AND $usedefaultsidebar === 'true') {
   include('styleswitcher.php')
   ?>
 </div>
-<script>
-  function unrollbottombar() {
-    var x = document.getElementById("mybottombar");
-    if (x.className === "bottombar") {
-      x.className += " responsive";
-    } else {
-      x.className = "bottombar";
-    }
-  }
 
-  function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-  }
-
-  function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-  }
-</script>
 </body>
+
+<script src="/scripts/responsivemenus.js"></script>
 
 </html>

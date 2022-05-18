@@ -31,7 +31,7 @@ if (!isset($_SESSION["username"])) {
 
     <button class="openbtn" onclick="openNav()">☰</button>
     <div class="sidebar" id="mySidebar"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-      <a class="active" href="/home/"><img src="/img/favicon.png" width="20px"> Ephew</a>
+      <a class="active" href="/home/"><img loading="lazy" src="/img/favicon.png" width="20px"> Ephew</a>
       <a href="/create/">➕ New post</a>
       <a href="/about/">❔Info</a>
       <a href="/feedback/">❕Feedback</a>

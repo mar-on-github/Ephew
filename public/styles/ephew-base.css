@@ -38,7 +38,7 @@ div.link-embed {
   box-shadow: 8px 10px 15px 0 rgba(0, 0, 0, 0.2);
   background: #a8a8a838;
   display: inline-flex;
-  align-items: center;
+  place-items: center;
   justify-content: space-evenly;
   flex-direction: column;
 }
