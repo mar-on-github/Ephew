@@ -19,7 +19,7 @@ $themetype = LocateStyleSheet();
     <link rel="icon" type="image/png" href="/img/favicon-512x512.png" />
     <link rel="stylesheet" href="/styles/ephew-base.css" content-type="text/css" charset="utf-8" />
     <?php
-    echo "<link rel=\"stylesheet\" href=\"/styles/";
+    echo "<link rel=\"stylesheet\" href=\"/styles/colors/";
     if (isset($_SESSION["themetype"])) {
         $themetype = ($_SESSION["themetype"]);
     } else {
