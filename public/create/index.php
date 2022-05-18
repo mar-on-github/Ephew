@@ -7,7 +7,7 @@ if ($_REQUEST['posttype'] == 'post') {
     $usedefaultsidebar = "true";
     include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
 ?>
-    <form target="_blank" action="/write.php" method="POST" class="big-ephew-form">
+    <form action="/write.php" method="POST" class="big-ephew-form">
         <div class="centered">
             <h1>New post</h1>
             <hr>
@@ -38,7 +38,7 @@ if ($_REQUEST['posttype'] == 'article') {
     $usedefaultsidebar = "true";
     include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
 ?>
-    <form target="_blank" action="/write.php" method="POST" class="big-ephew-form">
+    <form action="/write.php" method="POST" class="big-ephew-form">
         <div class="centered">
             <h1>Article editor</h1>
             <hr>
@@ -91,7 +91,7 @@ if ($_REQUEST['posttype'] == 'article') {
                 $usedefaultsidebar = "true";
                 include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
                 ?>
-    <form target="_blank" action="2.php" method="POST" class="big-ephew-form" style="text-align: center;">
+    <form action="2.php" method="POST" class="big-ephew-form" style="text-align: center;">
         <h1>Media post</h1>
         <hr>
         <p>Ephew media posts are planned to support multiple media files at once.</p>
@@ -137,7 +137,7 @@ if ($_REQUEST['posttype'] == 'article') {
                 $usedefaultsidebar = "true";
                 include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
 ?>
-    <form target="_blank" action="/write.php" method="POST" class="big-ephew-form">
+    <form action="/write.php" method="POST" class="big-ephew-form">
         <div class="centered">
             <h1>Post a link!</h1>
             <p>Your link will be embedded using the Ephew-URL-embedder.</p>
