@@ -330,14 +330,20 @@ h4 {
   text-align: center;
   cursor: pointer;
 }
-.ephew-inputtablebox[type=text] {
-  color: #b086ff;
-  background-color: #ffffff;
+.ephew-textinputtablebox {
+  margin: 10px;
+  border-radius: 10px 10px 20px 20px;
+  border: 5px solid;
+  outline: 0;
+  min-width: 80%;
+  height: auto;
+  padding: 17px;
+  text-align: -webkit-center;
+  text-align: center;
+  cursor: pointer;
 }
-
-.ephew-inputtablebox[type=url] {
-  color: #b086ff;
-  background-color: #ffffff;
+textarea.ephew-textinputtablebox {
+resize: none;
 }
 .link {
     font-size: 15px;

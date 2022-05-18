@@ -115,6 +115,12 @@ h1 {
     background-color: #b086ff;
     border-color: #4dffd2;
   }
+.ephew-textinputtablebox {
+  color: #b086ff;
+  background-color: #e2e2e2;
+  border-color: #4dffd2;
+  box-shadow: inset 0px 0px 10px 10px #b086ff;
+}
 
 .link {
   color: #666;

@@ -98,7 +98,14 @@ h1 {
 .ephew-inputtablebox {
       color: #5c5c8a;
       border-color: #a9c3bc;
-background-color: #f5f5dc;}
+background-color: #f5f5dc;
+}
+.ephew-textinputtablebox {
+  color: #4d4b52;
+  background-color: #ddd99a;
+  border-color: #a9c3bc;
+  box-shadow: inset 0px 0px 10px 10px #f5f5dc;
+}
 
 .link {
     color: #666;
