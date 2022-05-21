@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "erusev/parsedown": "^1.7",
-        "symfony/symfony": "^3.3"
+        "symfony/symfony": "^3.3",
+        "vlucas/phpdotenv": "^5.4"
     },
     "autoload": {
         "psr-4": {
