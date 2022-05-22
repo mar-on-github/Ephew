@@ -80,4 +80,3 @@
         "symfony/phpunit-bridge": "^6.0"
     }
 }
-// --ignore-platform-req=ext-dom --ignore-platform-req=ext-xmlwriter --ignore-platform-req=ext-xmlwriter --ignore-platform-req=ext-xml --ignore-platform-req=ext-xmlwriter untill it works
