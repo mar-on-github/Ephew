@@ -27,3 +27,4 @@ Project Ephew.code-workspace
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+composer.lock
