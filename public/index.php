@@ -8,6 +8,45 @@ if (file_exists(__DIR__ . '/maintenance')) {
 }
 
 // Functions that used to be separate files
+function filestyleswitcher() {
+    if (isset($_SESSION["themetype"])) {
+        $themetype = $_SESSION["themetype"];
+        echo "<!-- \$themetype is currently: '"
+            . ($_SESSION["themetype"])
+            . "'. -->";
+        if ($_SESSION["themetype"] === 'light') {
+?>
+            <form method="post" id="themeswitchform"><input type="hidden" name="settheme" value="sepia">
+                <a class="themeswitcher" href="#" onclick="document.getElementById('themeswitchform').submit()">📜Sepia theme</a>
+            </form>
+        <?php
+        }
+        if ($_SESSION["themetype"] === 'sepia') {
+        ?>
+            <form method="post" id="themeswitchform"><input type="hidden" name="settheme" value="dark">
+                <a class="themeswitcher" href="#" onclick="document.getElementById('themeswitchform').submit()">🌓Dark theme</a>
+            </form>
+        <?php
+        }
+        if ($_SESSION["themetype"] === 'dark') {
+        ?>
+            <form method="post" id="themeswitchform"><input type="hidden" name="settheme" value="light">
+                <a class="themeswitcher" href="#" onclick="document.getElementById('themeswitchform').submit();">💡Light theme</a>
+            </form>
+    <?php
+        }
+    }
+    if (!isset($_SESSION["themetype"])) {
+        if (isset($_COOKIE["themetype"])) {
+            $_SESSION["themetype"] = $_COOKIE["themetype"];
+            $themetype = $_SESSION["themetype"];
+        } else {
+            $_SESSION["themetype"] = 'light';
+            $themetype = 'light';
+        }
+    }
+}
+
 function filetimeline()
 {
     echo "<ul class=\"timeline\">";
@@ -30,8 +69,9 @@ function filetimeline()
     echo "</ul>";
 }
 
-function unifiedheader($usedefaultsidebar, $pagetitle){
-?>
+function unifiedheader($usedefaultsidebar, $pagetitle)
+{
+    ?>
     <!--
     Starting this project today.
     - Mar Bloeiman
@@ -113,7 +153,7 @@ function unifiedheader($usedefaultsidebar, $pagetitle){
                 }
                 //bottombarlink("/feedback/", "Feedback");
                 bottombarlink("/blog/", "Blog");
-                include(__DIR__ . '/../src/Ephew-internals/styleswitcher.php')
+                filestyleswitcher();
                 ?>
             </div>
 
@@ -381,30 +421,30 @@ function unifiedheader($usedefaultsidebar, $pagetitle){
 
 
 
-// Serve pages
+    // Serve pages
 
-//      Redirect home from doc root.
-if (($_SERVER['REQUEST_URI']) === '/') {
+    //      Redirect home from doc root.
+    if (($_SERVER['REQUEST_URI']) === '/') {
         header("Location: /home/");
         die;
-}
-//      Home page
-if (($_SERVER['REQUEST_URI']) === '/home/') {
+    }
+    //      Home page
+    if (($_SERVER['REQUEST_URI']) === '/home/') {
         include(__DIR__ . "/home.php");
         die;
-}
-//      Ephew Write Engine v2
-if (($_SERVER['REQUEST_URI']) === '/write2') {
+    }
+    //      Ephew Write Engine v2
+    if (($_SERVER['REQUEST_URI']) === '/write2') {
         echo "The Ephew Write Engine will soon get a huge update... But wait for it!";
         die;
-}
-//      Ephew Write Engine v1 (legacy)
-if (($_SERVER['REQUEST_URI']) === '/write.php') {
+    }
+    //      Ephew Write Engine v1 (legacy)
+    if (($_SERVER['REQUEST_URI']) === '/write.php') {
         include(__DIR__ . "/write.php");
         die;
-}
-//      Timeline RSS Feed
-if (($_SERVER['REQUEST_URI']) === '/timeline.rss') {
+    }
+    //      Timeline RSS Feed
+    if (($_SERVER['REQUEST_URI']) === '/timeline.rss') {
         header('Content-type: application/xml');
         echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
     <rss version=\"2.0\"
@@ -436,10 +476,10 @@ if (($_SERVER['REQUEST_URI']) === '/timeline.rss') {
 
     </channel>
     </rss>
-<?php
-}
-//      Login page
-if (($_SERVER['REQUEST_URI']) === '/login/') {
+    <?php
+    }
+    //      Login page
+    if (($_SERVER['REQUEST_URI']) === '/login/') {
         if (session_id() == '') {
             session_start();
         }
@@ -448,7 +488,7 @@ if (($_SERVER['REQUEST_URI']) === '/login/') {
         }
         $pagetitle = "Logging in";
         $usedefaultsidebar = "false";
-        unifiedheader("$usedefaultsidebar","$pagetitle");
+        unifiedheader("$usedefaultsidebar", "$pagetitle");
         $SQL_comm_ADDR = GetSQLCreds('address');
         $SQL_comm_USER = GetSQLCreds('username');
         $SQL_comm_PASS = GetSQLCreds('password');
@@ -503,18 +543,18 @@ if (($_SERVER['REQUEST_URI']) === '/login/') {
 
     <?php
         }
-        unifiedfooter("$usedefaultsidebar","$autoendcontentdiv");
+        unifiedfooter("$usedefaultsidebar", "$autoendcontentdiv");
         die;
-}
-//      Register page
-if (($_SERVER['REQUEST_URI']) === '/signup/') {
-    if (session_id() == '') {
-    session_start();
     }
-        if(isset($_SESSION["username"])) {
-        header("Location: /home");
+    //      Register page
+    if (($_SERVER['REQUEST_URI']) === '/signup/') {
+        if (session_id() == '') {
+            session_start();
         }
-    unifiedheader("$usedefaultsidebar","$pagetitle");
+        if (isset($_SESSION["username"])) {
+            header("Location: /home");
+        }
+        unifiedheader("$usedefaultsidebar", "$pagetitle");
     ?>
 
     <title>Ephew - Creating an account :)</title>
@@ -524,13 +564,13 @@ if (($_SERVER['REQUEST_URI']) === '/signup/') {
         $SQL_comm_PASS = GetSQLCreds('password');
         $SQL_comm_DBNM = GetSQLCreds('database');
         $con = mysqli_connect("$SQL_comm_ADDR", "$SQL_comm_USER", "$SQL_comm_PASS", "$SQL_comm_DBNM");
-        
+
         // Check connection
         if (mysqli_connect_errno()) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            echo "Failed to connect to MySQL: " . mysqli_connect_error();
         }
         if (session_id() == '') {
-        session_start();
+            session_start();
         }
         // When form submitted, insert values into the database.
         if (isset($_REQUEST['username'])) {
@@ -560,40 +600,40 @@ if (($_SERVER['REQUEST_URI']) === '/signup/') {
             }
         } else {
     ?>
-    <div class="loginsidebar">
-    <form class="ephew-form" action="" method="post">
-        <h1 class="login-title">Registration</h1>
-        <input type="text" class="login-input" name="username" placeholder="Username" required />
-        <input type="text" class="login-input" name="email" placeholder="Email Adress">
-        <input type="password" class="login-input" name="password" placeholder="Password">
-        <input type="submit" name="submit" value="Register" class="ephew-buttons ephew-button-big">
-        <p class="link">Already have an account? <a href="/login/">Log in!</a></p>
-    </form>
-    </div>
-    <div class="logincontent">
-    👀 Hello there.
-    <h1>Are you ready to sign up?</h1>
-    </div>
-    <?php
+        <div class="loginsidebar">
+            <form class="ephew-form" action="" method="post">
+                <h1 class="login-title">Registration</h1>
+                <input type="text" class="login-input" name="username" placeholder="Username" required />
+                <input type="text" class="login-input" name="email" placeholder="Email Adress">
+                <input type="password" class="login-input" name="password" placeholder="Password">
+                <input type="submit" name="submit" value="Register" class="ephew-buttons ephew-button-big">
+                <p class="link">Already have an account? <a href="/login/">Log in!</a></p>
+            </form>
+        </div>
+        <div class="logincontent">
+            👀 Hello there.
+            <h1>Are you ready to sign up?</h1>
+        </div>
+<?php
         }
-    unifiedfooter("$usedefaultsidebar","$autoendcontentdiv");
-}
+        unifiedfooter("$usedefaultsidebar", "$autoendcontentdiv");
+    }
 
-//      Register page
-if (($_SERVER['REQUEST_URI']) === '/about/') {
-    header ("Location: /readme/");
-}
+    //      Register page
+    if (($_SERVER['REQUEST_URI']) === '/about/') {
+        header("Location: /readme/");
+    }
 
-//      Register page
-if (($_SERVER['REQUEST_URI']) === '/readme/') {
-$pagetitle = "About";
-$usedefaultsidebar = "true";
-unifiedheader("$usedefaultsidebar","$pagetitle");
-echo "<CENTER>";
-$abouttext = file_get_contents(__DIR__ . '/../readme.md');
-$Parsedown = new Parsedown();
+    //      Register page
+    if (($_SERVER['REQUEST_URI']) === '/readme/') {
+        $pagetitle = "About";
+        $usedefaultsidebar = "true";
+        unifiedheader("$usedefaultsidebar", "$pagetitle");
+        echo "<CENTER>";
+        $abouttext = file_get_contents(__DIR__ . '/../readme.md');
+        $Parsedown = new Parsedown();
 
-echo $Parsedown->text($abouttext);
-echo "</CENTER>";
-unifiedfooter("$usedefaultsidebar","$autoendcontentdiv");
-}
+        echo $Parsedown->text($abouttext);
+        echo "</CENTER>";
+        unifiedfooter("$usedefaultsidebar", "$autoendcontentdiv");
+    }
