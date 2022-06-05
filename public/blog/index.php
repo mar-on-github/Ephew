@@ -1,7 +1,7 @@
 <?php
 $pagetitle = "The Ephew Blog";
 $usedefaultsidebar = "true";
-include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
+unifiedheader();
 ?>
     <ul class="timeline">
         <?php
@@ -23,5 +23,5 @@ include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
         ?>
     </ul>
 <?php
-include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
+unifiedfooter();
 ?>

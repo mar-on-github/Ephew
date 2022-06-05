@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
+unifiedheader();
 ?>
 <?php
 if (session_id() == '') {
@@ -19,7 +19,7 @@ if (!isset($_SESSION["username"])) {
   <div class="content">
     <h1>Oh hi there! Good <span id="wishes">day</span>.</h1>
     <p>I don't recognize you, are you new here?</p>
-    <?php include('timeline.php'); ?>
+    <?php filetimeline(); ?>
   </div>
 <?php
 } else {
@@ -63,5 +63,5 @@ if (!isset($_SESSION["username"])) {
     document.getElementById("wishes").innerHTML = wishes;
   </script>
   <?php
-  include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
+  unifiedfooter();
   ?>

@@ -1,6 +1,5 @@
 <?php
-include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
-require_once("../../src/Ephew-internals/functions.php");
+unifiedheader();
 if ((compilepost($_GET["postid"], 'posttype') == 'post')) {
   echo "<title>Ephew - Post by "
     . compilepost($_GET["postid"], 'postauthor')
@@ -82,5 +81,5 @@ if ((compilepost($_GET["postid"], 'posttype') == 'article')) {
   <?php } ?>
 </div>
 <?php
-include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
+unifiedfooter();
 ?>

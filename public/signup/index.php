@@ -7,12 +7,11 @@ if (session_id() == '') {
     }
 ?>
 <?php
-include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
+unifiedheader();
 ?>
 
 <title>Ephew - Creating an account :)</title>
 <?php
-    require_once('../../src/Ephew-internals/functions.php');
     $SQL_comm_USER = GetSQLCreds('username');
     $SQL_comm_PASS = GetSQLCreds('password');
     $con = mysqli_connect("localhost", "$SQL_comm_USER", "$SQL_comm_PASS", "ephew");
@@ -74,5 +73,5 @@ include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
     }
 ?>
 <?php
-include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
+unifiedfooter();
 ?>

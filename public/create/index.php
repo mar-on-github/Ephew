@@ -5,7 +5,7 @@ if (!isset($_REQUEST['posttype'])) {
 if ($_REQUEST['posttype'] == 'post') {
     $pagetitle = "New post";
     $usedefaultsidebar = "true";
-    include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
+    unifiedheader();
 ?>
     <form action="/write.php" method="POST" class="big-ephew-form">
         <div class="centered">
@@ -31,12 +31,12 @@ if ($_REQUEST['posttype'] == 'post') {
     </form>
     </div>
 <?php
-    include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
+    unifiedfooter();
 }
 if ($_REQUEST['posttype'] == 'article') {
     $pagetitle = "New post - Writing an article";
     $usedefaultsidebar = "true";
-    include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
+    unifiedheader();
 ?>
     <form action="/write.php" method="POST" class="big-ephew-form">
         <div class="centered">
@@ -69,7 +69,7 @@ if ($_REQUEST['posttype'] == 'article') {
     </form>
     </div>
     <?php
-    include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
+    unifiedfooter();
     ?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
@@ -89,7 +89,7 @@ if ($_REQUEST['posttype'] == 'article') {
             if ($_REQUEST['posttype'] == 'media') {
                 $pagetitle = "New post - Writing an article";
                 $usedefaultsidebar = "true";
-                include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
+                unifiedheader();
                 ?>
     <form action="2.php" method="POST" class="big-ephew-form" style="text-align: center;">
         <h1>Media post</h1>
@@ -130,12 +130,12 @@ if ($_REQUEST['posttype'] == 'article') {
     </form>
     </div>
 <?php
-                include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
+                unifiedfooter();
             }
             if ($_REQUEST['posttype'] == 'link') {
                 $pagetitle = "New post - Posting a link";
                 $usedefaultsidebar = "true";
-                include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
+                unifiedheader();
 ?>
     <form action="/write.php" method="POST" class="big-ephew-form">
         <div class="centered">
@@ -167,14 +167,14 @@ if ($_REQUEST['posttype'] == 'article') {
     </form>
     </div>
 <?php
-                include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
+                unifiedfooter();
             }
             exit;
             choosetype:
             include __DIR__ . ("/../auth_session.php");
             $pagetitle = "New post - Choose a post type";
             $usedefaultsidebar = "true";
-            include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
+            unifiedheader();
 ?>
 <h1>Choose post type</h1>
 <div class="ephew-form">
@@ -186,5 +186,5 @@ if ($_REQUEST['posttype'] == 'article') {
 
 
 <?php
-include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
+unifiedfooter();
 ?>

@@ -9,11 +9,10 @@ if (session_id() == '') {
 <?php
 $pagetitle = "Logging in";
 $usedefaultsidebar = "false";
-include __DIR__ . ("/../../src/Ephew-internals/unifiedheader.php");
+unifiedheader();
 ?>
 <!-- content starts -->
 <?php
-require_once ('../../src/Ephew-internals/functions.php');
 $SQL_comm_USER = GetSQLCreds('username');
 $SQL_comm_PASS = GetSQLCreds('password');
 $con = mysqli_connect("localhost", "$SQL_comm_USER", "$SQL_comm_PASS", "ephew");
@@ -70,5 +69,5 @@ if (session_id() == '') {
     }
 ?>
 <?php
-include __DIR__ . ("/../../src/Ephew-internals/unifiedfooter.php");
+unifiedfooter();
 ?>

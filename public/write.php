@@ -82,5 +82,5 @@ function writetotimeline($IDToWrite){
         ?>
     </div>
 <?php
-include __DIR__ . ("/../src/Ephew-internals/unifiedfooter.php");
+unifiedfooter();
  ?>
