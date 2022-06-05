@@ -274,9 +274,8 @@ function LocateStyleSheet()
     return $themetype;
 }
 //require_once __DIR__ . ('/../../hiddenphp/sqlpassword.php');
-function GetSQLCreds(string $output = 'username' | 'password' | 'address' | 'database'): string
-{
-    // Looing for .env at the root directory
+function GetSQLCreds(string $output = 'username' | 'password' | 'address' | 'database'): string {
+    // Looking for .env at the root directory
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../../");
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../../", '.env.local');
     $dotenv->load();
@@ -400,7 +399,7 @@ if (($_SERVER['REQUEST_URI']) === '/timeline.rss') {
     <channel>\n";
     ?>
     <title>Ephew</title>
-    <atom:link href="https://<?php echo $_SERVER['HTTP_HOST']; ?>/feed.rss/" rel="self" type="application/rss+xml" />
+    <atom:link href="https://<?php echo $_SERVER['HTTP_HOST']; ?>/timeline.rss" rel="self" type="application/rss+xml" />
     <link>https://<?php echo $_SERVER['HTTP_HOST']; ?></link>
     <description>a new aproach to social media.</description>
     <?php
