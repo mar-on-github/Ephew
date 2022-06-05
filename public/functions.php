@@ -36,7 +36,7 @@ function compilepost($postid, $typeoutput) {
 function composepost($postid, $posttype, $postcontent, $post_timestamp, $postauthor, $post_alttext){
         echo "<div>\n<div class=\"postedbyuserheader\">";
         if ((TestIfUsernameExists($postauthor)) == true) {
-            echo "<img loading=\"lazy\" src=\"/profile/picture.php?for="
+            echo "<img loading=\"lazy\" src=\"/profile/picture?for="
                 . $postauthor
                 . "\" class=\"lazy\"/>"
                 . "by&nbsp;<a href=\"/profile?for="

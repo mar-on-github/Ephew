@@ -140,7 +140,7 @@ if (($_SERVER['REQUEST_URI']) === '/login/') {
 
     <?php
     }
-    unifiedfooter("$usedefaultsidebar", "$autoendcontentdiv");
+    unifiedfooter($usedefaultsidebar);
     die;
 }
 //      Register page
@@ -151,7 +151,7 @@ if (($_SERVER['REQUEST_URI']) === '/signup/') {
     if (isset($_SESSION["username"])) {
         header("Location: /home");
     }
-    unifiedheader("$usedefaultsidebar", "$pagetitle");
+    unifiedheader($usedefaultsidebar, "$pagetitle");
     ?>
 
     <title>Ephew - Creating an account :)</title>
@@ -213,7 +213,7 @@ if (($_SERVER['REQUEST_URI']) === '/signup/') {
         </div>
     <?php
     }
-    unifiedfooter("$usedefaultsidebar", "$autoendcontentdiv");
+    unifiedfooter($usedefaultsidebar);
 }
 
 //      About redirect to readme page
@@ -225,14 +225,13 @@ if (($_SERVER['REQUEST_URI']) === '/about/') {
 if (($_SERVER['REQUEST_URI']) === '/readme/') {
     $pagetitle = "About";
     $usedefaultsidebar = "true";
-    unifiedheader("$usedefaultsidebar", "$pagetitle");
-    echo "<CENTER>";
+    unifiedheader($usedefaultsidebar, "$pagetitle");
     $abouttext = file_get_contents(__DIR__ . '/../readme.md');
     $Parsedown = new Parsedown();
 
     echo $Parsedown->text($abouttext);
-    echo "</CENTER>";
-    unifiedfooter("$usedefaultsidebar", "$autoendcontentdiv");
+    echo "\n<br>";
+    unifiedfooter($usedefaultsidebar);
 }
 //      Logout
 if (($_SERVER['REQUEST_URI']) === '/logout/') {
@@ -240,12 +239,14 @@ if (($_SERVER['REQUEST_URI']) === '/logout/') {
     if (session_destroy()) {
         header("Location: /login/");
     }
+    die;
 }
 //      Feedback page
 if (($_SERVER['REQUEST_URI']) === '/feedback/') {
     unifiedheader(true, "Feedback");
     echo "Feedback is always appreciated around here. But please <a href=\"https://github.com/mar-on-github/Ephew/issues/new/choose\">leave it as a GitHub Issue</a>.<br></br>Thank you for using Ephew!";
     unifiedfooter(true, true);
+    die;
 }
 //      The Ephew Blog
 if (($_SERVER['REQUEST_URI']) === '/blog/') {
@@ -272,4 +273,27 @@ if (($_SERVER['REQUEST_URI']) === '/blog/') {
     </ul>
 <?php
     unifiedfooter();
+    die;
+}
+
+if (($_SERVER['REQUEST_URI']) === '/profile/picture') {
+    if (!(isset($_GET['for']))) {
+        exit;
+    }
+    $profilephotoindexing_file = __DIR__ . "/profile/profilephotos/index/index_";
+    $profilephotoindexing_file .= md5($_GET['for']);
+    $profilephotoindexing_file .= ".txt";
+    if (file_exists($profilephotoindexing_file)) {
+        $f = fopen($profilephotoindexing_file, 'r');
+        $raw_image_url = fgets($f);
+        fclose($f);
+        $image_url = __DIR__ . "/profile/profilephotos/$raw_image_url";
+    } else {
+        $image_url = __DIR__ . "/IMG/defaultuserprofile.png";
+    }
+    header('Content-type: image/jpeg');
+    if (file_exists($image_url)) {
+        readfile($image_url);
+    }
+    exit;
 }

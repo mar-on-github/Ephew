@@ -113,7 +113,7 @@ function unifiedheader(bool $usedefaultsidebar, string $pagetitle = NULL) {
                 bottombarlink('/home/', '<img loading="lazy" src="/img/favicon.png" width="20px"> Ephew</a>');
                 bottombarlink('/create/', '➕ New post');
                 bottombarlink('/about/', '❔Info');
-                bottombarlink('/feeback/', '❕Feedback');
+                bottombarlink('/feedback/', '❕Feedback');
                 ?>
             </div>
             <div class="content">
@@ -138,7 +138,7 @@ function unifiedfooter(bool $usedefaultsidebar = true, bool $autoendcontentdiv =
                 } else {
                     bottombarlink("/logout/", "Log out");
                 }
-                //bottombarlink("/feedback/", "Feedback");
+                bottombarlink("/feedback/", "Feedback");
                 bottombarlink("/blog/", "Blog");
                 filestyleswitcher();
                 ?>
