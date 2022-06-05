@@ -373,7 +373,7 @@ if (($_SERVER['REQUEST_URI']) === '/') {
     die;
 }
 if (($_SERVER['REQUEST_URI']) === '/home') {
-    
+    include ('home.php');
     die;
 }
 if (($_SERVER['REQUEST_URI']) === '/write2') {
