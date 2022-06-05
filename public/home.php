@@ -61,5 +61,5 @@ if (!isset($_SESSION["username"])) {
     document.getElementById("wishes").innerHTML = wishes;
   </script>
   <?php
-  unifiedfooter("","");
+  unifiedfooter();
   ?>
