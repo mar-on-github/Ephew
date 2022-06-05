@@ -30,8 +30,7 @@ function filetimeline()
     echo "</ul>";
 }
 
-function unifiedheader()
-{
+function unifiedheader($usedefaultsidebar, $pagetitle){
 ?>
     <!--
     Starting this project today.
@@ -94,7 +93,7 @@ function unifiedheader()
         }
     }
 
-    function unifiedfooter()
+    function unifiedfooter($usedefaultsidebar, $autoendcontentdiv)
     {
         if (isset($usedefaultsidebar) and $usedefaultsidebar === 'true') {
             if (!isset($autoendcontentdiv) or !($autoendcontentdiv === 'false')) {
@@ -355,7 +354,7 @@ function unifiedheader()
     }
     function CreateEmbedForURL($url)
     {
-        require_once(__DIR__ . "/../Assets/Metadatalib.php");
+        require_once(__DIR__ . "/../src/Assets/Metadatalib.php");
         try {
             // Initialize URL meta class 
             $urlMeta = new UrlMeta($url);
@@ -386,11 +385,11 @@ function unifiedheader()
 
 //      Redirect home from doc root.
 if (($_SERVER['REQUEST_URI']) === '/') {
-        header("Location: /home");
+        header("Location: /home/");
         die;
 }
 //      Home page
-if (($_SERVER['REQUEST_URI']) === '/home') {
+if (($_SERVER['REQUEST_URI']) === '/home/') {
         include(__DIR__ . "/home.php");
         die;
 }
@@ -445,11 +444,11 @@ if (($_SERVER['REQUEST_URI']) === '/login/') {
             session_start();
         }
         if (isset($_SESSION["username"])) {
-            header("Location: /home");
+            header("Location: /home/");
         }
         $pagetitle = "Logging in";
         $usedefaultsidebar = "false";
-        unifiedheader();
+        unifiedheader("$usedefaultsidebar","$pagetitle");
         $SQL_comm_ADDR = GetSQLCreds('address');
         $SQL_comm_USER = GetSQLCreds('username');
         $SQL_comm_PASS = GetSQLCreds('password');
@@ -504,7 +503,7 @@ if (($_SERVER['REQUEST_URI']) === '/login/') {
 
     <?php
         }
-        unifiedfooter();
+        unifiedfooter("$usedefaultsidebar","$autoendcontentdiv");
         die;
 }
 //      Register page
@@ -515,7 +514,7 @@ if (($_SERVER['REQUEST_URI']) === '/signup/') {
         if(isset($_SESSION["username"])) {
         header("Location: /home");
         }
-    unifiedheader();
+    unifiedheader("$usedefaultsidebar","$pagetitle");
     ?>
 
     <title>Ephew - Creating an account :)</title>
@@ -577,6 +576,24 @@ if (($_SERVER['REQUEST_URI']) === '/signup/') {
     </div>
     <?php
         }
-    unifiedfooter();
+    unifiedfooter("$usedefaultsidebar","$autoendcontentdiv");
 }
 
+//      Register page
+if (($_SERVER['REQUEST_URI']) === '/about/') {
+    header ("Location: /readme/");
+}
+
+//      Register page
+if (($_SERVER['REQUEST_URI']) === '/readme/') {
+$pagetitle = "About";
+$usedefaultsidebar = "true";
+unifiedheader("$usedefaultsidebar","$pagetitle");
+echo "<CENTER>";
+$abouttext = file_get_contents(__DIR__ . '/../readme.md');
+$Parsedown = new Parsedown();
+
+echo $Parsedown->text($abouttext);
+echo "</CENTER>";
+unifiedfooter("$usedefaultsidebar","$autoendcontentdiv");
+}

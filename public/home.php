@@ -1,7 +1,5 @@
 <?php
-unifiedheader();
-?>
-<?php
+unifiedheader("false", null);
 if (session_id() == '') {
   session_start();
 }
@@ -63,5 +61,5 @@ if (!isset($_SESSION["username"])) {
     document.getElementById("wishes").innerHTML = wishes;
   </script>
   <?php
-  unifiedfooter();
+  unifiedfooter("","");
   ?>
