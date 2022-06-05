@@ -1,4 +1,12 @@
 <?php
+require_once realpath(__DIR__ . '/../vendor/autoload.php');
+// Check if maintenance mode is enabled
+if (file_exists(__DIR__ . '/maintenance')) {
+    echo "<h1>This server is in maintenance mode!</h1>";
+    echo file_get_contents(__DIR__ . '/maintenance');
+    die;
+}
+
 // Functions that used to be separate files
 function filetimeline() {
     echo "<ul class=\"timeline\">";
@@ -29,7 +37,6 @@ function unifiedheader() {
     2022-4-26
     -->
     <?php
-    require_once __DIR__ . "/../../vendor/autoload.php";
     $themetype = LocateStyleSheet();
     ?>
     <!DOCTYPE html>
@@ -118,7 +125,6 @@ function unifiedfooter() {
 }
 
 // Ephew functions
-require_once realpath(__DIR__ . '/../../vendor/autoload.php');
 function comcompost($postid)
 {
     composepost($postid, compilepost($postid, 'posttype'), compilepost($postid, 'postcontent'), compilepost($postid, 'post_timestamp'), compilepost($postid, 'postauthor'), compilepost($postid, 'post_alttext'));
@@ -273,7 +279,6 @@ function LocateStyleSheet()
     }
     return $themetype;
 }
-//require_once __DIR__ . ('/../../hiddenphp/sqlpassword.php');
 function GetSQLCreds(string $output = 'username' | 'password' | 'address' | 'database'): string {
     // Looking for .env at the root directory
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../../");
