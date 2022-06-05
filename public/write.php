@@ -1,5 +1,11 @@
 <?php
-  include("auth_session.php");
+    if (session_id() == '') {
+        session_start();
+    }
+    if (!isset($_SESSION["username"])) {
+        header("Location: /login/");
+        exit();
+    }
  ?>
 <?php
 include __DIR__ . ("/../src/Ephew-internals/unifiedheader.php");

@@ -1,5 +1,11 @@
 <?php
-include __DIR__ . ("/../../auth_session.php");
+if (session_id() == '') {
+        session_start();
+}
+if (!isset($_SESSION["username"])) {
+        header("Location: /login/");
+        exit();
+}
 if (isset($_FILES["fileToUpload"])) {
 $target_dir = "../profilephotos/";
 $target_file = $target_dir . "profilephoto_" . $_SESSION['username'] . "_" . basename($_FILES["fileToUpload"]["name"]);

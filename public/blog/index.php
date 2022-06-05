@@ -1,7 +1,7 @@
 <?php
 $pagetitle = "The Ephew Blog";
 $usedefaultsidebar = "true";
-unifiedheader();
+unifiedheader($usedefaultsidebar, $pagetitle);
 ?>
     <ul class="timeline">
         <?php

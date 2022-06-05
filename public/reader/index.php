@@ -1,5 +1,5 @@
 <?php
-unifiedheader();
+unifiedheader($usedefaultsidebar, $pagetitle);
 if ((compilepost($_GET["postid"], 'posttype') == 'post')) {
   echo "<title>Ephew - Post by "
     . compilepost($_GET["postid"], 'postauthor')

@@ -1,5 +1,13 @@
 <?php
-include __DIR__ . ("/../auth_session.php");
+
+if (session_id() == '') {
+        session_start();
+    }
+    if (!isset($_SESSION["username"])) {
+        header("Location: /login/");
+        exit();
+}
+
 $user = $_GET['for'] ?? $_SESSION['username'];
 $for = $_GET['for'] ?? "''";
 $SQL_comm_USER = GetSQLCreds('username');
@@ -13,7 +21,7 @@ if (mysqli_connect_errno()) {
 if ((($user === $for)) and (!($user === $_SESSION['username']))) {
     $pagetitle = $user . "'s profile";
     $usedefaultsidebar = "false";
-    unifiedheader();
+    unifiedheader($usedefaultsidebar, $pagetitle);
 ?>
     <button class="openbtn" onclick="openNav()">☰</button>
     <div class="sidebar" id="mySidebar"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
@@ -31,7 +39,7 @@ if ((($user === $for)) and (!($user === $_SESSION['username']))) {
 if ((($user === $_SESSION['username']))) {
     $pagetitle = "Your profile";
     $usedefaultsidebar = "false";
-    unifiedheader();
+    unifiedheader($usedefaultsidebar, $pagetitle);
     ?>
         <button class="openbtn" onclick="openNav()">☰</button>
         <div class="sidebar" id="mySidebar"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>

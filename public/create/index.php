@@ -5,7 +5,7 @@ if (!isset($_REQUEST['posttype'])) {
 if ($_REQUEST['posttype'] == 'post') {
     $pagetitle = "New post";
     $usedefaultsidebar = "true";
-    unifiedheader();
+    unifiedheader($usedefaultsidebar, $pagetitle);
 ?>
     <form action="/write.php" method="POST" class="big-ephew-form">
         <div class="centered">
@@ -36,7 +36,7 @@ if ($_REQUEST['posttype'] == 'post') {
 if ($_REQUEST['posttype'] == 'article') {
     $pagetitle = "New post - Writing an article";
     $usedefaultsidebar = "true";
-    unifiedheader();
+    unifiedheader($usedefaultsidebar, $pagetitle);
 ?>
     <form action="/write.php" method="POST" class="big-ephew-form">
         <div class="centered">
@@ -89,7 +89,7 @@ if ($_REQUEST['posttype'] == 'article') {
             if ($_REQUEST['posttype'] == 'media') {
                 $pagetitle = "New post - Writing an article";
                 $usedefaultsidebar = "true";
-                unifiedheader();
+                unifiedheader($usedefaultsidebar, $pagetitle);
                 ?>
     <form action="2.php" method="POST" class="big-ephew-form" style="text-align: center;">
         <h1>Media post</h1>
@@ -135,7 +135,7 @@ if ($_REQUEST['posttype'] == 'article') {
             if ($_REQUEST['posttype'] == 'link') {
                 $pagetitle = "New post - Posting a link";
                 $usedefaultsidebar = "true";
-                unifiedheader();
+                unifiedheader($usedefaultsidebar, $pagetitle);
 ?>
     <form action="/write.php" method="POST" class="big-ephew-form">
         <div class="centered">
@@ -171,10 +171,16 @@ if ($_REQUEST['posttype'] == 'article') {
             }
             exit;
             choosetype:
-            include __DIR__ . ("/../auth_session.php");
+                if (session_id() == '') {
+                    session_start();
+                }
+                if (!isset($_SESSION["username"])) {
+                    header("Location: /login/");
+                    exit();
+                }
             $pagetitle = "New post - Choose a post type";
             $usedefaultsidebar = "true";
-            unifiedheader();
+            unifiedheader($usedefaultsidebar, $pagetitle);
 ?>
 <h1>Choose post type</h1>
 <div class="ephew-form">

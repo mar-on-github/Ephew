@@ -128,7 +128,7 @@ function unifiedheader(bool $usedefaultsidebar, string $pagetitle = NULL) {
         <?php }
 }
 
-function unifiedfooter(bool $usedefaultsidebar, bool $autoendcontentdiv)
+function unifiedfooter(bool $usedefaultsidebar = true, bool $autoendcontentdiv = true)
     {
         if (isset($usedefaultsidebar) and $usedefaultsidebar === true) {
             if (!isset($autoendcontentdiv) or !($autoendcontentdiv === false)) {
