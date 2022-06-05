@@ -200,8 +200,7 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
             return $$typeoutput;
         }
     }
-    function composepost($postid, $posttype, $postcontent, $post_timestamp, $postauthor, $post_alttext)
-    {
+    function composepost($postid, $posttype, $postcontent, $post_timestamp, $postauthor, $post_alttext){
         echo "<div>\n<div class=\"postedbyuserheader\">";
         if ((TestIfUsernameExists($postauthor)) == true) {
             echo "<img loading=\"lazy\" src=\"/profile/picture.php?for="
@@ -619,13 +618,13 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
         unifiedfooter("$usedefaultsidebar", "$autoendcontentdiv");
     }
 
-    //      Register page
-    if (($_SERVER['REQUEST_URI']) === '/about/') {
+//      About redirect to readme page
+if (($_SERVER['REQUEST_URI']) === '/about/') {
         header("Location: /readme/");
     }
 
-    //      Register page
-    if (($_SERVER['REQUEST_URI']) === '/readme/') {
+//      Readme page
+if (($_SERVER['REQUEST_URI']) === '/readme/') {
         $pagetitle = "About";
         $usedefaultsidebar = "true";
         unifiedheader("$usedefaultsidebar", "$pagetitle");
@@ -636,4 +635,11 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
         echo $Parsedown->text($abouttext);
         echo "</CENTER>";
         unifiedfooter("$usedefaultsidebar", "$autoendcontentdiv");
+}
+//      Readme page
+if (($_SERVER['REQUEST_URI']) === '/logout/') {
+    session_start();
+    if(session_destroy()) {
+        header("Location: /login/");
     }
+}
