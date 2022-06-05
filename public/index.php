@@ -47,8 +47,7 @@ function filestyleswitcher() {
     }
 }
 
-function filetimeline()
-{
+function filetimeline(){
     echo "<ul class=\"timeline\">";
     $timelinedottxt = __DIR__ . "/timelinebyid.txt";
     $postsbyid = file($timelinedottxt);
@@ -69,8 +68,7 @@ function filetimeline()
     echo "</ul>";
 }
 
-function unifiedheader($usedefaultsidebar, $pagetitle)
-{
+function unifiedheader(bool $usedefaultsidebar, string $pagetitle = NULL) {
     ?>
     <!--
     Starting this project today.
@@ -116,27 +114,24 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
         <script type="module" src="/scripts/sw.js"></script>
         <script src="/scripts/nicm.js"></script>
         <?php
-        if (isset($usedefaultsidebar)) {
-            if ($usedefaultsidebar === 'true') {
-        ?>
-                <button class="openbtn" onclick="openNav()">☰</button>
-                <div class="sidebar" id="mySidebar"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                    <?php
-                    bottombarlink('/home/', '<img loading="lazy" src="/img/favicon.png" width="20px"> Ephew</a>');
-                    bottombarlink('/create/', '➕ New post');
-                    bottombarlink('/about/', '❔Info');
-                    bottombarlink('/feeback/', '❕Feedback');
-                    ?>
-                </div>
-                <div class="content">
-            <?php }
-        }
-    }
+        if ($usedefaultsidebar) { ?>
+            <button class="openbtn" onclick="openNav()">☰</button>
+            <div class="sidebar" id="mySidebar"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <?php
+                bottombarlink('/home/', '<img loading="lazy" src="/img/favicon.png" width="20px"> Ephew</a>');
+                bottombarlink('/create/', '➕ New post');
+                bottombarlink('/about/', '❔Info');
+                bottombarlink('/feeback/', '❕Feedback');
+                ?>
+            </div>
+            <div class="content">
+        <?php }
+}
 
-    function unifiedfooter($usedefaultsidebar, $autoendcontentdiv)
+function unifiedfooter(bool $usedefaultsidebar, bool $autoendcontentdiv)
     {
-        if (isset($usedefaultsidebar) and $usedefaultsidebar === 'true') {
-            if (!isset($autoendcontentdiv) or !($autoendcontentdiv === 'false')) {
+        if (isset($usedefaultsidebar) and $usedefaultsidebar === true) {
+            if (!isset($autoendcontentdiv) or !($autoendcontentdiv === false)) {
                 echo "</div>";
             }
         }
@@ -167,12 +162,10 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
     }
 
     // Ephew functions
-    function comcompost($postid)
-    {
+function comcompost($postid) {
         composepost($postid, compilepost($postid, 'posttype'), compilepost($postid, 'postcontent'), compilepost($postid, 'post_timestamp'), compilepost($postid, 'postauthor'), compilepost($postid, 'post_alttext'));
-    }
-    function compilepost($postid, $typeoutput)
-    {
+}
+function compilepost($postid, $typeoutput) {
         $SQL_comm_ADDR = GetSQLCreds('address');
         $SQL_comm_USER = GetSQLCreds('username');
         $SQL_comm_PASS = GetSQLCreds('password');
@@ -199,8 +192,8 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
             $post_privacy = $output['post_privacy'];
             return $$typeoutput;
         }
-    }
-    function composepost($postid, $posttype, $postcontent, $post_timestamp, $postauthor, $post_alttext){
+}
+function composepost($postid, $posttype, $postcontent, $post_timestamp, $postauthor, $post_alttext){
         echo "<div>\n<div class=\"postedbyuserheader\">";
         if ((TestIfUsernameExists($postauthor)) == true) {
             echo "<img loading=\"lazy\" src=\"/profile/picture.php?for="
@@ -257,9 +250,8 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
             echo "wip";
         }
         echo "</div>";
-    }
-    function ephewloggesthis($logme)
-    {
+}
+function ephewloggesthis($logme) {
         $dataToLog = array(
             date("Y-m-d H:i:s"),
             $_SERVER['REMOTE_ADDR'],
@@ -280,21 +272,18 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
 
         //Log the data to your file using file_put_contents.
         file_put_contents($pathToFile, $data, FILE_APPEND);
-    }
-    function bottombarlink($gotohref, $linktitle)
-    {
+}
+function bottombarlink($gotohref, $linktitle){
         if ($_SERVER['REQUEST_URI'] === $gotohref) {
             echo "<a href=\"" . $gotohref . "\" class=\"active\">" . $linktitle . "</a>\n";
         } else {
             echo "<a href=\"" . $gotohref . "\" >" . $linktitle . "</a>\n";
         }
     }
-    function encodeValue(string $s)
-    {
+function encodeValue(string $s){
         return htmlentities($s, ENT_COMPAT | ENT_QUOTES, 'ISO-8859-1', true);
-    }
-    function LocateStyleSheet()
-    {
+}
+function LocateStyleSheet() {
         if (session_id() == '') {
             session_start();
             if (isset($_COOKIE["themetype"])) {
@@ -322,9 +311,8 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
             }
         }
         return $themetype;
-    }
-    function GetSQLCreds(string $output = 'username' | 'password' | 'address' | 'database'): string
-    {
+}
+function GetSQLCreds(string $output = 'username' | 'password' | 'address' | 'database'): string {
         // Looking for .env at the root directory
         $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../");
         $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . "/../", '.env.local');
@@ -336,10 +324,9 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
         $address = $_ENV['DB_ADDR'];
         // ... return them
         return $$output;
-    }
+}
 
-    function GetUserID($username)
-    {
+function GetUserID($username) {
         $SQL_comm_ADDR = GetSQLCreds('address');
         $SQL_comm_USER = GetSQLCreds('username');
         $SQL_comm_PASS = GetSQLCreds('password');
@@ -356,9 +343,8 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
             $userid = $output['id'];
         }
         return $userid;
-    }
-    function GetUserNameFromID($userid)
-    {
+}
+function GetUserNameFromID($userid) {
         $SQL_comm_ADDR = GetSQLCreds('address');
         $SQL_comm_USER = GetSQLCreds('username');
         $SQL_comm_PASS = GetSQLCreds('password');
@@ -374,25 +360,22 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
             $username = $output['username'];
         }
         return $username;
-    }
-    function TestIfUsernameExists($username)
-    {
+}
+function TestIfUsernameExists($username) {
         if (!(GetUserID($username) === null)) {
             return true;
         } else {
             return false;
         }
-    }
-    function ReturnUsernameOrOnFailID($userid)
-    {
+}
+function ReturnUsernameOrOnFailID($userid) {
         $RUOFID = GetUserNameFromID($userid);
         if ($RUOFID == NULL) {
             $RUOFID = $userid;
         }
         return $RUOFID;
-    }
-    function CreateEmbedForURL($url)
-    {
+}
+function CreateEmbedForURL($url) {
         require_once(__DIR__ . "/../src/Assets/Metadatalib.php");
         try {
             // Initialize URL meta class 
@@ -416,7 +399,7 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
             <a href="<?php echo $metaData->url; ?>" class="ephew-buttons ephew-button-small" target="_blank">Visit site</a><br></br>
         </div>
     <?php }
-    }
+}
 
 
 
@@ -494,9 +477,8 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
         if (isset($_SESSION["username"])) {
             header("Location: /home/");
         }
-        $pagetitle = "Logging in";
         $usedefaultsidebar = "false";
-        unifiedheader("$usedefaultsidebar", "$pagetitle");
+        unifiedheader($usedefaultsidebar, "Logging in");
         $SQL_comm_ADDR = GetSQLCreds('address');
         $SQL_comm_USER = GetSQLCreds('username');
         $SQL_comm_PASS = GetSQLCreds('password');
@@ -645,10 +627,16 @@ if (($_SERVER['REQUEST_URI']) === '/readme/') {
         echo "</CENTER>";
         unifiedfooter("$usedefaultsidebar", "$autoendcontentdiv");
 }
-//      Readme page
+//      Logout
 if (($_SERVER['REQUEST_URI']) === '/logout/') {
     session_start();
     if(session_destroy()) {
         header("Location: /login/");
     }
+}
+//      Feedback page
+if (($_SERVER['REQUEST_URI']) === '/feedback/') {
+    unifiedheader(true,"Feedback");
+    echo "Feedback is always appreciated around here. But please <a href=\"https://github.com/mar-on-github/Ephew/issues/new/choose\">leave it as a GitHub Issue</a>.<br></br>Thank you for using Ephew!";
+    unifiedfooter(true,true);
 }

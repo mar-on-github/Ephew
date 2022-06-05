@@ -1,5 +1,5 @@
 <?php
-unifiedheader("false", null);
+unifiedheader(false, null);
 if (session_id() == '') {
   session_start();
 }
