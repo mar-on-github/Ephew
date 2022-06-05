@@ -422,6 +422,15 @@ function unifiedheader($usedefaultsidebar, $pagetitle)
 
     // Serve pages
 
+    //      We will always need a trailing slash, or the script won't recognise requested sources
+    $url = $_SERVER['REQUEST_URI'];
+    $lastchar = substr( $url, -1 );
+    if ( $lastchar != '/' ):
+        if ( !$_SERVER['QUERY_STRING'] and !is_file( $_SERVER['DOCUMENT_ROOT'].$url ) and !is_dir( $_SERVER['DOCUMENT_ROOT'].$url ) ):
+            header( "Location: $url/" );
+        endif;
+    endif;
+
     //      Redirect home from doc root.
     if (($_SERVER['REQUEST_URI']) === '/') {
         header("Location: /home/");
