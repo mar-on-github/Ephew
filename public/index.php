@@ -1,5 +1,5 @@
 <?php
-require_once realpath(__DIR__ . '/../vendor/autoload.php');
+require_once (__DIR__ . '/../vendor/autoload.php');
 // Check if maintenance mode is enabled
 if (file_exists(__DIR__ . '/maintenance')) {
     echo "<h1>This server is in maintenance mode!</h1>";
@@ -10,7 +10,7 @@ if (file_exists(__DIR__ . '/maintenance')) {
 // Functions that used to be separate files
 function filetimeline() {
     echo "<ul class=\"timeline\">";
-    $timelinedottxt=__DIR__ . "/../timelinebyid.txt";
+    $timelinedottxt=__DIR__ . "/timelinebyid.txt";
     $postsbyid = file($timelinedottxt);
     foreach ($postsbyid as $idofpost) {
         $clean_id = preg_replace(
@@ -111,7 +111,7 @@ function unifiedfooter() {
     }
     //bottombarlink("/feedback/", "Feedback");
     bottombarlink("/blog/", "Blog");
-    include('styleswitcher.php')
+    include(__DIR__ . '/../src/Ephew-internals/styleswitcher.php')
     ?>
     </div>
 
@@ -370,7 +370,7 @@ function CreateEmbedForURL($url)
 
 
 
-
+// Serve pages
 
 if (($_SERVER['REQUEST_URI']) === '/') {
     header("Location: /home");
@@ -421,4 +421,8 @@ if (($_SERVER['REQUEST_URI']) === '/timeline.rss') {
     </channel>
     </rss>
 <?php
+}
+if (($_SERVER['REQUEST_URI']) === '/login') {
+    
+    die;
 }
