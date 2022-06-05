@@ -1,5 +1,15 @@
 <?php
-
+if (($_SERVER['REQUEST_URI']) === '/') {
+    header("Location: /home");
+    die;
+}
+if (($_SERVER['REQUEST_URI']) === '/home') {
+    
+}
+if (($_SERVER['REQUEST_URI']) === '/write.php') {
+    include (__DIR__ . "/write.php");
+    die;
+}
 if (($_SERVER['REQUEST_URI']) === '/timeline.rss') {
     header('Content-type: application/xml');
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
