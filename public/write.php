@@ -1,4 +1,13 @@
 <?php
+require_once(__DIR__ . '/../vendor/autoload.php');
+require_once(__DIR__ . "/functions.php");
+require_once(__DIR__ . "/snippets.php");
+// Check if maintenance mode is enabled
+if (file_exists(__DIR__ . '/maintenance')) {
+    echo "<h1>This server is in maintenance mode!</h1>";
+    echo file_get_contents(__DIR__ . '/maintenance');
+    die;
+}
     if (session_id() == '') {
         session_start();
     }
