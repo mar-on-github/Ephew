@@ -153,8 +153,6 @@ if (($_SERVER['REQUEST_URI']) === '/signup/' OR '/register/') {
         header("Location: /home");
     }
     unifiedheader(false, "Creating an account :)");
-    ?>
-    <?php
     $SQL_comm_ADDR = GetSQLCreds('address');
     $SQL_comm_USER = GetSQLCreds('username');
     $SQL_comm_PASS = GetSQLCreds('password');
