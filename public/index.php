@@ -213,6 +213,7 @@ if (($_SERVER['REQUEST_URI']) === '/signup/' OR '/register/') {
     <?php
     }
     unifiedfooter(false,false);
+    die;
 }
 
 //      About redirect to readme page
