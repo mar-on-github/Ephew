@@ -21,6 +21,8 @@ if ($lastchar != '/') :
     endif;
 endif;
 
+echo "<!-- You are here:" . $_SERVER['REQUEST_URI'] . ".";
+
 //      Redirect home from doc root.
 if (($_SERVER['REQUEST_URI']) === '/') {
     header("Location: /home/");
