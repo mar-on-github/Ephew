@@ -271,12 +271,12 @@ if (($_SERVER['REQUEST_URI']) === '/blog/') {
         }
         ?>
     </ul>
-    <?php
+<?php
     unifiedfooter();
     die;
 }
 
-if (($_SERVER['REQUEST_URI']) === '/profile/picture') {
+if (($_SERVER['REQUEST_URI']) === '/profile/picture/') {
     if (!(isset($_GET['for']))) {
         exit;
     }
@@ -297,41 +297,131 @@ if (($_SERVER['REQUEST_URI']) === '/profile/picture') {
     }
     exit;
 }
-if (($_SERVER['REQUEST_URI']) === '/create/') {
-    if (!isset($_REQUEST['posttype'])) {
-        goto choosetype;
+if (($_SERVER['REQUEST_URI']) === '/profile/') {
+
+
+    if (session_id() == '') {
+        session_start();
     }
-    if ($_REQUEST['posttype'] == 'post') {
-        unifiedheader(true, "New post");
+    if (!isset($_SESSION["username"])) {
+        header("Location: /login/");
+        exit();
+    }
+
+    $user = $_GET['for'] ?? $_SESSION['username'];
+    $for = $_GET['for'] ?? "''";
+    $SQL_comm_USER = GetSQLCreds('username');
+    $SQL_comm_PASS = GetSQLCreds('password');
+    // Check connection
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+?>
+    <?php
+    if ((($user === $for)) and (!($user === $_SESSION['username']))) {
+        $pagetitle = $user . "'s profile";
+        $usedefaultsidebar = "false";
+        unifiedheader($usedefaultsidebar, $pagetitle);
     ?>
-        <form action="/write.php" method="POST" class="big-ephew-form">
-            <div class="centered">
-                <h1>New post</h1>
-                <hr>
-                <div class="ephew-formlabels"><label for="privacy">
-                        <div class="ephew-formlabels"><label for="phewcontent">
-                                <textarea name="phewcontent" class="ephew-textinputtablebox" required maxlength="300" style="height: 200px; width: 90%"></textarea>
-                                <p style="font-size: x-small;">300 characters maximum!</p><br>
-                            </label></div>
-                        <h4>Privacy</h4>
-                        <select name="privacy" required class="ephew-inputtablebox" style="width:100px;">
-                            <option value="public">Public</option>
-                            <option value="private" disabled>Fwends only</option>
-                            <option value="public-readonly" disabled>Comments off</option>
-                        </select>
-                    </label>
-                </div>
-                <input type="submit" class="ephew-buttons ephew-button-big" value="Post it!">
+        <button class="openbtn" onclick="openNav()">☰</button>
+        <div class="sidebar" id="mySidebar"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <?php
+            bottombarlink('/home/', '<img loading="lazy" src="/img/favicon.png" width="20px"> Ephew</a>');
+            bottombarlink('/profile/edit/#profilepicture', 'Edit profile picture');
+            bottombarlink('/profile/edit/#bio', 'Edit bio');
+            bottombarlink('/feedback/', '❕Feedback');
+            ?>
+        </div>
+        <div class="content">
+            <?php echo $user; ?>
+        <?php
+    }
+    if ((($user === $_SESSION['username']))) {
+        $pagetitle = "Your profile";
+        $usedefaultsidebar = "false";
+        unifiedheader($usedefaultsidebar, $pagetitle);
+        ?>
+            <button class="openbtn" onclick="openNav()">☰</button>
+            <div class="sidebar" id="mySidebar"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                <?php
+                bottombarlink('/home/', '<img loading="lazy" src="/img/favicon.png" width="20px"> Ephew</a>');
+                bottombarlink('/profile/edit/#profilepicture', 'Edit profile picture');
+                bottombarlink('/profile/edit/#bio', 'Edit bio');
+                bottombarlink('/feedback/', '❕Feedback');
+                ?>
             </div>
-            <input type=hidden name=phewtype value="post">
-            <input type="hidden" name=alttext value="na" required>
-        </form>
+            <div class="content">
+                <p>This should be your page! A work in progress.</p>
+            <?php
+        }
+
+        $conn = mysqli_connect("localhost", "$SQL_comm_USER", "$SQL_comm_PASS", "ephew");
+        $sql = "SELECT * FROM `ephew`.`posts` WHERE postauthor='$user'";
+        $sqlq = $conn->query($sql);
+        // if ($sqlq === false) {
+        //     die("ERROR: Could not connect to database. "
+        //     . mysqli_connect_error());
+        // }
+
+        echo "<ul class=\"timeline\">";
+        if (mysqli_query($conn, $sql)) {
+            while ($output = $sqlq->fetch_array()) {
+                $postid = $output['postid'];
+                if (compilepost($postid, 'posttype') === 'article') {
+                    echo "<li class=\"postview article\">";
+                } else {
+                    echo "<li class=\"postview\">";
+                }
+                comcompost($postid);
+                echo "</li>\n<br>\n";
+            }
+        } else {
+            echo "Couldn't find any posts by this user.";
+            die;
+        }
+        echo "</ul>";
+
+            ?>
+
+            </div>
+            <?php
+            unifiedfooter();
+}
+if (($_SERVER['REQUEST_URI']) === '/create/') {
+            if (!isset($_REQUEST['posttype'])) {
+                goto choosetype;
+            }
+            if ($_REQUEST['posttype'] == 'post') {
+                unifiedheader(true, "New post");
+            ?>
+                <form action="/write.php" method="POST" class="big-ephew-form">
+                    <div class="centered">
+                        <h1>New post</h1>
+                        <hr>
+                        <div class="ephew-formlabels"><label for="privacy">
+                                <div class="ephew-formlabels"><label for="phewcontent">
+                                        <textarea name="phewcontent" class="ephew-textinputtablebox" required maxlength="300" style="height: 200px; width: 90%"></textarea>
+                                        <p style="font-size: x-small;">300 characters maximum!</p><br>
+                                    </label></div>
+                                <h4>Privacy</h4>
+                                <select name="privacy" required class="ephew-inputtablebox" style="width:100px;">
+                                    <option value="public">Public</option>
+                                    <option value="private" disabled>Fwends only</option>
+                                    <option value="public-readonly" disabled>Comments off</option>
+                                </select>
+                            </label>
+                        </div>
+                        <input type="submit" class="ephew-buttons ephew-button-big" value="Post it!">
+                    </div>
+                    <input type=hidden name=phewtype value="post">
+                    <input type="hidden" name=alttext value="na" required>
+                </form>
         </div>
     <?php
-        unifiedfooter();
-    }
-    if ($_REQUEST['posttype'] == 'article') {
-        unifiedheader(true, "New post - Writing an article");
+                unifiedfooter();
+            }
+            if ($_REQUEST['posttype'] == 'article') {
+                unifiedheader(true, "New post - Writing an article");
     ?>
         <form action="/write.php" method="POST" class="big-ephew-form">
             <div class="centered">
@@ -364,7 +454,7 @@ if (($_SERVER['REQUEST_URI']) === '/create/') {
         </form>
         </div>
         <?php
-        unifiedfooter();
+                unifiedfooter();
         ?>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
@@ -483,36 +573,36 @@ if (($_SERVER['REQUEST_URI']) === '/create/') {
 
 
 <?php
-    unifiedfooter();
-    die;
-}
+            unifiedfooter();
+            die;
+        }
 
-if (($_SERVER['REQUEST_URI']) === '/settings/') {
-    echo "This site is really really new... <br> As such, this page is not available yet... Sorry.";
-    die;
-}
-if (($_SERVER['REQUEST_URI']) === '/reader/') {
+        if (($_SERVER['REQUEST_URI']) === '/settings/') {
+            echo "This site is really really new... <br> As such, this page is not available yet... Sorry.";
+            die;
+        }
+        if (($_SERVER['REQUEST_URI']) === '/reader/') {
 
-    unifiedheader($usedefaultsidebar, $pagetitle);
-    if ((compilepost($_GET["postid"], 'posttype') == 'post')) {
-        echo "<title>Ephew - Post by "
-            . compilepost($_GET["postid"], 'postauthor')
-            . ", saying '"
-            . compilepost($_GET["postid"], 'postcontent')
-            . "'</title>";
-    }
-    if ((compilepost($_GET["postid"], 'posttype') == 'media')) {
-        echo "<title>Ephew - Media post by "
-            . compilepost($_GET["postid"], 'postauthor')
-            . "</title>";
-    }
-    if ((compilepost($_GET["postid"], 'posttype') == 'article')) {
-        echo "<title>Ephew - Article by "
-            . compilepost($_GET["postid"], 'postauthor')
-            . ", about '"
-            . compilepost($_GET["postid"], 'post_alttext')
-            . "'</title>";
-    }
+            unifiedheader($usedefaultsidebar, $pagetitle);
+            if ((compilepost($_GET["postid"], 'posttype') == 'post')) {
+                echo "<title>Ephew - Post by "
+                    . compilepost($_GET["postid"], 'postauthor')
+                    . ", saying '"
+                    . compilepost($_GET["postid"], 'postcontent')
+                    . "'</title>";
+            }
+            if ((compilepost($_GET["postid"], 'posttype') == 'media')) {
+                echo "<title>Ephew - Media post by "
+                    . compilepost($_GET["postid"], 'postauthor')
+                    . "</title>";
+            }
+            if ((compilepost($_GET["postid"], 'posttype') == 'article')) {
+                echo "<title>Ephew - Article by "
+                    . compilepost($_GET["postid"], 'postauthor')
+                    . ", about '"
+                    . compilepost($_GET["postid"], 'post_alttext')
+                    . "'</title>";
+            }
 ?>
 
     <button class="openbtn" onclick="openNav()">☰</button>
@@ -524,7 +614,7 @@ if (($_SERVER['REQUEST_URI']) === '/reader/') {
     </div>
     <div class="content">
         <?php
-        if (compilepost($_GET["postid"], 'posttype') === 'article') {
+            if (compilepost($_GET["postid"], 'posttype') === 'article') {
 
         ?>
             <div class="postview postview-article">
@@ -565,7 +655,7 @@ if (($_SERVER['REQUEST_URI']) === '/reader/') {
 
             </div>
         <?php
-        } else {
+            } else {
         ?>
             <div class="postview">
                 <?php
@@ -575,14 +665,14 @@ if (($_SERVER['REQUEST_URI']) === '/reader/') {
         <?php } ?>
     </div>
 <?php
-    unifiedfooter();
-}
+            unifiedfooter();
+        }
 
-// Give users on wrong pages the Ephew-404[tm]
-if (($_SERVER['REQUEST_URI']) === '/hmmph/') {
-    unifiedheader(true, "uhhh...");
-    echo "<p>Oops... Seems like that page could not be found...</p> <br><font style=\"size: small; color: #70561991; text-decoration:line-through;\">Keep digging Azrael, I need those smurfs!</font><br></br><p><a href=\"/home/\">Back home, then!</a></p>";
-    unifiedfooter();
-    die;
-}
-header("Location: /hmmph/");
+        // Give users on wrong pages the Ephew-404[tm]
+        if (($_SERVER['REQUEST_URI']) === '/hmmph/') {
+            unifiedheader(true, "uhhh...");
+            echo "<p>Oops... Seems like that page could not be found...</p> <br><font style=\"size: small; color: #70561991; text-decoration:line-through;\">Keep digging Azrael, I need those smurfs!</font><br></br><p><a href=\"/home/\">Back home, then!</a></p>";
+            unifiedfooter();
+            die;
+        }
+        header("Location: /hmmph/");
