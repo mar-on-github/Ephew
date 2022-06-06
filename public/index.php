@@ -84,8 +84,7 @@ if (($_SERVER['REQUEST_URI']) === '/login/') {
     if (isset($_SESSION["username"])) {
         header("Location: /home/");
     }
-    $usedefaultsidebar = "false";
-    unifiedheader($usedefaultsidebar, "Logging in");
+    unifiedheader(false, "Logging in");
     $SQL_comm_ADDR = GetSQLCreds('address');
     $SQL_comm_USER = GetSQLCreds('username');
     $SQL_comm_PASS = GetSQLCreds('password');
@@ -140,7 +139,7 @@ if (($_SERVER['REQUEST_URI']) === '/login/') {
 
     <?php
     }
-    unifiedfooter($usedefaultsidebar);
+    unifiedfooter(false,false);
     die;
 }
 //      Register page
@@ -151,7 +150,7 @@ if (($_SERVER['REQUEST_URI']) === '/signup/') {
     if (isset($_SESSION["username"])) {
         header("Location: /home");
     }
-    unifiedheader($usedefaultsidebar, "$pagetitle");
+    unifiedheader(false, "$pagetitle");
     ?>
 
     <title>Ephew - Creating an account :)</title>
@@ -213,7 +212,7 @@ if (($_SERVER['REQUEST_URI']) === '/signup/') {
         </div>
     <?php
     }
-    unifiedfooter($usedefaultsidebar);
+    unifiedfooter(false,false);
 }
 
 //      About redirect to readme page
