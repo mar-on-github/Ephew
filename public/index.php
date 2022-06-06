@@ -152,10 +152,8 @@ if (($_SERVER['REQUEST_URI']) === '/signup/' OR '/register/') {
     if (isset($_SESSION["username"])) {
         header("Location: /home");
     }
-    unifiedheader(false, "$pagetitle");
+    unifiedheader(false, "Creating an account :)");
     ?>
-
-    <title>Ephew - Creating an account :)</title>
     <?php
     $SQL_comm_ADDR = GetSQLCreds('address');
     $SQL_comm_USER = GetSQLCreds('username');
