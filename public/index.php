@@ -384,6 +384,7 @@ if (($_SERVER['REQUEST_URI']) === '/profile/') {
             </div>
             <?php
             unifiedfooter();
+            die;
 }
 if (($_SERVER['REQUEST_URI']) === '/create/') {
     include (__DIR__ . "/create.php");
@@ -416,6 +417,7 @@ if (($_SERVER['REQUEST_URI']) === '/create/') {
                     . compilepost($_GET["postid"], 'post_alttext')
                     . "'</title>";
             }
+            die;
 ?>
 
     <button class="openbtn" onclick="openNav()">☰</button>
