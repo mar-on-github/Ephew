@@ -668,10 +668,7 @@ if (($_SERVER['REQUEST_URI']) === '/create/') {
         }
 
         // Give users on wrong pages the Ephew-404[tm]
-        if (($_SERVER['REQUEST_URI']) === '/hmmph/') {
             unifiedheader(true, "uhhh...");
             echo "<p>Oops... Seems like that <CODE>". $_SERVER['REQUEST_URI'] . "</CODE> page could not be found...</p> <br><font style=\"size: small; color: #70561991; text-decoration:line-through;\">Keep digging Azrael, I need those smurfs!</font><br></br><p><a href=\"/home/\">Back home, then!</a></p>";
             unifiedfooter();
             die;
-        }
-        header("Location: /hmmph/");
