@@ -197,7 +197,7 @@ if (($_SERVER['REQUEST_URI']) === '/signup/' OR '/register/') {
     } else {
     ?>
         <div class="loginsidebar">
-            <form class="ephew-form" action="" method="post">
+            <form class="ephew-form" action="/signup/" method="post">
                 <h1 class="login-title">Registration</h1>
                 <input type="text" class="login-input" name="username" placeholder="Username" required />
                 <input type="text" class="login-input" name="email" placeholder="Email Adress">
