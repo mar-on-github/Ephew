@@ -13,7 +13,6 @@ public/profile/profilephotos/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
-hiddenphp/sqlpassword.php
 Project Ephew.code-workspace
 Project Ephew.code-workspace
 .vscode/settings.json
@@ -28,3 +27,4 @@ Project Ephew.code-workspace
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 composer.lock
+public/maintenance
